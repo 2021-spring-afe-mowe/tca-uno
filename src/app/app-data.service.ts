@@ -8,6 +8,11 @@ export interface BasicStatsDisplay {
   winningPercent: number;
 }
 
+export interface AvailablePlayerDisplay {
+  name: string;
+  checked: boolean;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -25,4 +30,45 @@ export class AppDataService {
       }
     );
   }
+
+  appData2 = [
+    {
+        gameResult: "W"
+        , players: [
+            "Tom"
+            , "Taylor"
+            , "Jack"
+            , "Stephanie"
+        ]
+    }
+    , {
+        gameResult: "L"
+        , players: [
+            "Tom"
+            , "Taylor"
+        ]
+    }
+    , {
+        gameResult: "W"
+        , players: [
+            "Tom"
+            , "Jack"
+        ]
+    }
+  ];
+
+  getAvailablePlayers = (): any[] =>  
+    [... new Set(
+      this.appData2.map(x => x.players)
+        .reduce(
+          (acc, x) => [...acc, ...x]
+          , []
+      )
+    )]
+    .sort()
+    .map(x => ({
+          name: x
+          , checked: false
+    }))
+  ;
 }
