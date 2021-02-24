@@ -1,4 +1,8 @@
 import { Component } from '@angular/core';
+import { 
+  AppDataService
+  , BasicStatsDisplay 
+} from '../app-data.service';
 
 @Component({
   selector: 'app-home',
@@ -7,6 +11,10 @@ import { Component } from '@angular/core';
 })
 export class HomePage {
 
-  constructor() {}
+  basicStats: BasicStatsDisplay;
 
+  constructor(private appDataSvc: AppDataService) {
+    //console.log(this.appDataSvc.calculateBasicWinLossStats());
+    this.basicStats = this.appDataSvc.calculateBasicWinLossStats();
+  }
 }
