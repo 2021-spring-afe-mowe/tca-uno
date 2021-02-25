@@ -1,0 +1,115 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Hand: 7 cards
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list
+    lines="none"
+  >
+
+    <ion-item-divider>
+      My turn...
+    </ion-item-divider>
+  
+    <ion-item>
+      <ion-button
+        style="flex: auto"
+        size="large"
+        color="light"
+      >
+      <ion-text color="success">
+        Play Card
+      </ion-text>
+    </ion-button>
+    </ion-item>
+  
+    <ion-item>
+      <ion-button
+        style="flex: auto"
+        size="large"
+        color="light"
+      >
+      <ion-text color="warning">
+        Draw Card
+      </ion-text>
+
+      </ion-button>
+    </ion-item>
+
+    <ion-item-divider>
+      Other actions...
+    </ion-item-divider>
+
+    <ion-item>
+      <ion-button
+        style="flex: auto"
+        size="large"
+        color="light"
+      >
+      <ion-text color="danger">
+        Draw Two
+      </ion-text>
+      </ion-button>
+    </ion-item>
+
+    <ion-item>
+      <ion-button
+        style="flex: auto"
+        size="large"
+        color="light"
+      >
+      <ion-text color="danger">
+        Draw Four
+      </ion-text>
+    </ion-button>
+    </ion-item>
+
+    <ion-item>
+      <ion-button
+        style="flex: auto"
+        size="large"
+        color="light"
+      >
+        <ion-text color="danger">
+          Draw Two
+        </ion-text>
+        &nbsp;
+        <small>
+          <ion-text
+            color="medium"
+          >
+            (Didn't say Uno)
+          </ion-text>
+        </small>
+      </ion-button>
+    </ion-item>
+
+  </ion-list>
+  
+</ion-content>
+
+<ion-footer>
+    <ion-toolbar>
+      <ion-button
+      color="light"
+    >
+      Quit
+    </ion-button>
+    <ion-button
+      color="danger"
+      slot="end"
+    >
+      I Lost
+    </ion-button>
+    <ion-button
+      color="success"
+      slot="end"
+    >
+      I Won
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>
