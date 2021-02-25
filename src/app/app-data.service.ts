@@ -35,7 +35,7 @@ export class AppDataService {
     {
         gameResult: "W"
         , players: [
-            "Tom"
+            "Tom Tubon"
             , "Taylor"
             , "Jack"
             , "Stephanie"
@@ -44,14 +44,14 @@ export class AppDataService {
     , {
         gameResult: "L"
         , players: [
-            "Tom"
+            "Tom Tubon"
             , "Taylor"
         ]
     }
     , {
         gameResult: "W"
         , players: [
-            "Tom"
+            "Tom Tubon"
             , "Jack"
         ]
     }
