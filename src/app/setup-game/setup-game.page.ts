@@ -15,7 +15,7 @@ export class SetupGamePage implements OnInit {
 
   ngOnInit() {
 
-    this.availablePlayers = this.appDataSvc.getAvailablePlayers();
+    this.availablePlayers = this.appDataSvc.getPreviousOpponents();
   }
 
 }

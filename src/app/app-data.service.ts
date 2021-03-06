@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 
-
 export interface BasicStatsDisplay {
   numberOfGames: number;
   wins: number;
@@ -13,6 +12,19 @@ export interface AvailablePlayerDisplay {
   checked: boolean;
 }
 
+interface GameResult {
+  
+  // "Me" means I won ! ! !
+  winningPlayer: string;
+
+  // Only the other players, not "Me" ? ? ? So number of players is length + 1 ! ! ! For now : - O
+  //
+  // Also, can't allow dupes or "Me" to be added. It's means something special ! ! !
+  opponents: string[];
+
+  // Under construction . . . Losely turns ? ? ?
+  actions: string[];
+}
 @Injectable({
   providedIn: 'root'
 })
@@ -31,35 +43,42 @@ export class AppDataService {
     );
   }
 
-  appData2 = [
+  gameResults: GameResult[] = [
     {
-        gameResult: "W"
-        , players: [
+        winningPlayer: "Me"
+        , opponents: [
             "Tom Tubon"
             , "Taylor"
             , "Jack"
             , "Stephanie"
         ]
+        , actions: []
     }
     , {
-        gameResult: "L"
-        , players: [
+        winningPlayer: "Taylor"
+        , opponents: [
             "Tom Tubon"
             , "Taylor"
         ]
+        , actions: []
     }
     , {
-        gameResult: "W"
-        , players: [
+        winningPlayer: "Me"
+        , opponents: [
             "Tom Tubon"
             , "Jack"
         ]
+        , actions: []
     }
   ];
 
-  getAvailablePlayers = (): any[] =>  
+  public getPreviousOpponents() {
+    return this.getOpponents(this.gameResults);
+  }
+
+  private getOpponents = (results: GameResult[]): AvailablePlayerDisplay[] =>  
     [... new Set(
-      this.appData2.map(x => x.players)
+      results.map(x => x.opponents)
         .reduce(
           (acc, x) => [...acc, ...x]
           , []
