@@ -38,15 +38,16 @@ export class AppDataService {
 
     const wins = this.gameResults.filter(x => x.winningPlayer == "Me").length;
     const losses = this.gameResults.filter(x => x.winningPlayer != "Me" && x.winningPlayer != "None").length;
-
+    const totalGames = this.gameResults.length;
+    const quits = totalGames - (wins + losses);
     return (
       {
         numberOfGames: this.gameResults.length
         , wins: wins
         , losses: losses
         , winningPercent: wins / (wins + losses)
-        , quits: this.gameResults.length - (wins + losses)
-        , completionPercent: (this.gameResults.length - (wins + losses)) / this.gameResults.length
+        , quits: quits
+        , completionPercent: (totalGames - quits) / totalGames
       }
     );
   }

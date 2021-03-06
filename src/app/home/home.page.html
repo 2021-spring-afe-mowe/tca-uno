@@ -31,29 +31,6 @@
       <ion-item-divider>
         Browse your stats...
       </ion-item-divider>
-
-      <ion-item>
-        <ion-card
-          style="flex: auto; margin-left: 0; margin-right: 0; margin-bottom: 0;"
-        >
-          <ion-card-header>
-            <ion-card-subtitle>Overall</ion-card-subtitle>
-            <ion-card-title>
-              {{ basicStats.wins }} Wins /
-              <small>
-                {{ basicStats.losses }} Loss<span *ngIf="basicStats.losses != 1">es</span>
-              </small>
-            </ion-card-title>
-          </ion-card-header>
-        
-          <ion-card-content>
-            Total Games: {{ basicStats.numberOfGames }}
-            <br>
-            Winning Percent: {{ basicStats.winningPercent | percent }}
-          </ion-card-content>
-        </ion-card>
-      </ion-item>
-
       
       <ion-item>
         <ion-card
@@ -70,105 +47,14 @@
           </ion-card-header>
         
           <ion-card-content>
+            Winning Percent: {{ basicStats.winningPercent | percent }}
+            <br>
+            <br>
             Total Games: {{ basicStats.numberOfGames }}
             <br>
-            Winning Percent: {{ basicStats.winningPercent | percent }}
-          </ion-card-content>
-        </ion-card>
-      </ion-item>
-
-
-      
-      <ion-item>
-        <ion-card
-          style="flex: auto; margin-left: 0; margin-right: 0; margin-bottom: 0;"
-        >
-          <ion-card-header>
-            <ion-card-subtitle>Overall</ion-card-subtitle>
-            <ion-card-title>
-              {{ basicStats.wins }} Wins /
-              <small>
-                {{ basicStats.losses }} Loss<span *ngIf="basicStats.losses != 1">es</span>
-              </small>
-            </ion-card-title>
-          </ion-card-header>
-        
-          <ion-card-content>
-            Total Games: {{ basicStats.numberOfGames }}
+            Games quit: {{ basicStats.quits }}
             <br>
-            Winning Percent: {{ basicStats.winningPercent | percent }}
-          </ion-card-content>
-        </ion-card>
-      </ion-item>
-
-
-      
-      <ion-item>
-        <ion-card
-          style="flex: auto; margin-left: 0; margin-right: 0; margin-bottom: 0;"
-        >
-          <ion-card-header>
-            <ion-card-subtitle>Overall</ion-card-subtitle>
-            <ion-card-title>
-              {{ basicStats.wins }} Wins /
-              <small>
-                {{ basicStats.losses }} Loss<span *ngIf="basicStats.losses != 1">es</span>
-              </small>
-            </ion-card-title>
-          </ion-card-header>
-        
-          <ion-card-content>
-            Total Games: {{ basicStats.numberOfGames }}
-            <br>
-            Winning Percent: {{ basicStats.winningPercent | percent }}
-          </ion-card-content>
-        </ion-card>
-      </ion-item>
-
-
-      
-      <ion-item>
-        <ion-card
-          style="flex: auto; margin-left: 0; margin-right: 0; margin-bottom: 0;"
-        >
-          <ion-card-header>
-            <ion-card-subtitle>Overall</ion-card-subtitle>
-            <ion-card-title>
-              {{ basicStats.wins }} Wins /
-              <small>
-                {{ basicStats.losses }} Loss<span *ngIf="basicStats.losses != 1">es</span>
-              </small>
-            </ion-card-title>
-          </ion-card-header>
-        
-          <ion-card-content>
-            Total Games: {{ basicStats.numberOfGames }}
-            <br>
-            Winning Percent: {{ basicStats.winningPercent | percent }}
-          </ion-card-content>
-        </ion-card>
-      </ion-item>
-
-
-      
-      <ion-item>
-        <ion-card
-          style="flex: auto; margin-left: 0; margin-right: 0; margin-bottom: 0;"
-        >
-          <ion-card-header>
-            <ion-card-subtitle>Overall</ion-card-subtitle>
-            <ion-card-title>
-              {{ basicStats.wins }} Wins /
-              <small>
-                {{ basicStats.losses }} Loss<span *ngIf="basicStats.losses != 1">es</span>
-              </small>
-            </ion-card-title>
-          </ion-card-header>
-        
-          <ion-card-content>
-            Total Games: {{ basicStats.numberOfGames }}
-            <br>
-            Winning Percent: {{ basicStats.winningPercent | percent }}
+            Completion Percent: {{ basicStats.completionPercent | percent }}
           </ion-card-content>
         </ion-card>
       </ion-item>
