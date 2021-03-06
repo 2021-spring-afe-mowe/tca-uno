@@ -5,6 +5,8 @@ export interface BasicStatsDisplay {
   wins: number;
   losses: number;
   winningPercent: number;
+  quits: number;
+  completionPercent: number;
 }
 
 export interface AvailablePlayerDisplay {
@@ -14,12 +16,12 @@ export interface AvailablePlayerDisplay {
 
 interface GameResult {
   
-  // "Me" means I won ! ! !
+  // "Me" means I won ! ! ! "None" will mean quit, i-o-g ? ? ?
   winningPlayer: string;
 
   // Only the other players, not "Me" ? ? ? So number of players is length + 1 ! ! ! For now : - O
   //
-  // Also, can't allow dupes or "Me" to be added. It's means something special ! ! !
+  // Also, can't allow dupes or "Me" or "None" to be added. They mean something special ! ! !
   opponents: string[];
 
   // Under construction . . . Losely turns ? ? ?
@@ -33,12 +35,18 @@ export class AppDataService {
   constructor() { }
 
   calculateBasicWinLossStats(): BasicStatsDisplay {
+
+    const wins = this.gameResults.filter(x => x.winningPlayer == "Me").length;
+    const losses = this.gameResults.filter(x => x.winningPlayer != "Me" && x.winningPlayer != "None").length;
+
     return (
       {
-        numberOfGames: 3
-        , wins: 2
-        , losses: 1
-        , winningPercent: 0.667
+        numberOfGames: this.gameResults.length
+        , wins: wins
+        , losses: losses
+        , winningPercent: wins / (wins + losses)
+        , quits: this.gameResults.length - (wins + losses)
+        , completionPercent: (this.gameResults.length - (wins + losses)) / this.gameResults.length
       }
     );
   }
