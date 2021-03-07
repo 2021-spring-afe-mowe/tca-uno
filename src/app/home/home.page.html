@@ -41,7 +41,7 @@
           <ion-card-header>
             <ion-card-subtitle>My Overall Stats</ion-card-subtitle>
             <ion-card-title>
-              {{ basicStats.wins }} Wins /
+              {{ basicStats.wins }} Win<span *ngIf="basicStats.wins != 1">s</span> /
               <small>
                 {{ basicStats.losses }} Loss<span *ngIf="basicStats.losses != 1">es</span>
               </small>
