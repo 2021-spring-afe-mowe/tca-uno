@@ -23,6 +23,10 @@ export class PlayGamePage implements OnInit {
     this.presentActionSheet("Win");
   }
 
+  quitGame() {
+    this.presentActionSheet("Quit");
+  }
+
   async presentActionSheet(what: string) {
     const actionSheet = await this.actionSheetController.create({
       buttons: [{

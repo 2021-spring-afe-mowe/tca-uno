@@ -70,6 +70,13 @@ export class AppDataService {
         break;
 
       case "Quit":
+        newGameResult = {
+          startDateTime: this.currentGameStartDateTime
+          , endDateTime: new Date()
+          , opponents: this.currentGameOpponents
+          , actions: []
+          , winningPlayer: "None"
+        };
         break;
     }
 
