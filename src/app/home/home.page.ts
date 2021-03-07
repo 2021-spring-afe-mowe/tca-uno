@@ -22,7 +22,6 @@ export class HomePage implements OnInit, ViewWillEnter {
   }
 
   ionViewWillEnter() {
-    console.log("here");
     this.basicStats = this.appDataSvc.calculateBasicWinLossStats();
   }
 }

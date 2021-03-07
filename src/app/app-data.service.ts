@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Storage } from '@ionic/storage';
 
 export interface BasicStatsDisplay {
   numberOfGames: number;
@@ -41,7 +42,14 @@ interface GameResult {
 })
 export class AppDataService {
 
-  constructor() { }
+  constructor(private storage: Storage) { 
+    this.loadPreviousGameResults();
+  }
+
+  async loadPreviousGameResults() {
+    const data = await this.storage.get("tcaUnoGameResults");
+    console.log("Storage data:", data);
+  }
 
   //
   // Some service properties used to store "current," "in progress," game data.
@@ -95,7 +103,8 @@ export class AppDataService {
       , newGameResult
     ];
 
-    console.log(this.gameResults);
+    this.storage.set("tcaUnoGameResults", JSON.stringify(this.gameResults));
+    console.log("confirmGameEnd()", this.gameResults);
   }
 
   calculateBasicWinLossStats(): BasicStatsDisplay {
