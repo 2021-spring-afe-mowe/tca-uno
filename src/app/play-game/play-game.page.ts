@@ -23,12 +23,7 @@ export class PlayGamePage implements OnInit {
 
   winGame() {
 
-    if(this.cardCount == 1) {
-      // Assume played last card to win ! ! !
-      this.playCard();
-    }
-
-    else if (this.cardCount > 1) {
+    if (this.cardCount > 1) {
       this.presentToast('You sure?');
       return;
     }
@@ -133,6 +128,12 @@ export class PlayGamePage implements OnInit {
         {
           text: `Confirm ${what}`,
           handler: () => {
+
+            if(this.cardCount == 1) {
+              // Assume user played their last card to win ! ! !
+              this.playCard();
+            }
+
             this.appDataSvc.confirmGameEnd(what, this.playActions);
             this.router.navigate(["/"]);
         }
