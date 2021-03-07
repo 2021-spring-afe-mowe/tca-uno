@@ -45,6 +45,18 @@ export class PlayGamePage implements OnInit {
     this.cardCount -= 1;
   }
 
+  drawTwo() {
+    this.cardCount += 2;
+  }
+
+  drawFour() {
+    this.cardCount += 4;
+  }
+
+  drawTwoForgotUno() {
+    this.cardCount += 2;
+  }
+
   async presentToast(message: string) {
     const toast = await this.toastController.create({
       message: message,
