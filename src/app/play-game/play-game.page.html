@@ -94,7 +94,9 @@
         style="flex: auto"
         size="large"
         color="light"
-      >
+        [attr.disabled]="playActions.length == 0"
+        (click)="undoLastPlayAction()"
+        >
         <ion-text color="dark">
           Undo
         </ion-text>
@@ -104,7 +106,7 @@
           <ion-text
             color="medium"
           >
-            Draw Two
+            {{ playActions.length > 0 ? playActions[playActions.length - 1].action : "None"}}
           </ion-text>
         </small>
       </ion-button>

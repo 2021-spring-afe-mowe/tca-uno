@@ -96,6 +96,10 @@ export class PlayGamePage implements OnInit {
     this.presentDrawCardActionSheet();
   }
 
+  undoLastPlayAction() {
+    this.playActions = this.playActions.filter((x, i) => i != this.playActions.length - 1);
+  }
+
   async presentToast(message: string) {
     const toast = await this.toastController.create({
       message: message,
