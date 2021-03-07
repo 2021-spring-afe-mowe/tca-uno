@@ -22,6 +22,17 @@ export class PlayGamePage implements OnInit {
   }
 
   winGame() {
+
+    if(this.cardCount == 1) {
+      // Assume played last card to win ! ! !
+      this.playCard();
+    }
+
+    else if (this.cardCount > 1) {
+      this.presentToast('You sure?');
+      return;
+    }
+
     this.presentWinQuitActionSheet("Win");
   }
 
