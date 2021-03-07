@@ -18,4 +18,18 @@ export class SetupGamePage implements OnInit {
     this.availablePlayers = this.appDataSvc.getPreviousOpponents();
   }
 
+  newPlayerName = "";
+
+  addNewPlayer() {
+    this.availablePlayers = [
+      ...this.availablePlayers
+      , {
+        name: this.newPlayerName
+        , checked: true // Assume adding name to play with this player right away ! ! !
+      }
+    ];
+
+    this.newPlayerName = "";
+  }
+
 }

@@ -14,8 +14,17 @@ export interface AvailablePlayerDisplay {
   checked: boolean;
 }
 
+interface PlayAction {
+
+  actionDateTime: Date;
+  action: string;
+}
+
 interface GameResult {
   
+  startDateTime: Date;
+  endDateTime: Date;
+
   // "Me" means I won ! ! ! "None" will mean quit, i-o-g ? ? ?
   winningPlayer: string;
 
@@ -25,7 +34,7 @@ interface GameResult {
   opponents: string[];
 
   // Under construction . . . Losely turns ? ? ?
-  actions: string[];
+  actions: PlayAction[];
 }
 @Injectable({
   providedIn: 'root'
@@ -33,6 +42,14 @@ interface GameResult {
 export class AppDataService {
 
   constructor() { }
+
+  //
+  // Some service properties used to store "current," "in progress," game data.
+  //
+  // This is a convenient way to share data between screens.
+  //
+  currentGameStartDateTime: Date;
+  currentGameOpponents: string[];
 
   calculateBasicWinLossStats(): BasicStatsDisplay {
 
@@ -52,34 +69,7 @@ export class AppDataService {
     );
   }
 
-  gameResults: GameResult[] = [
-    {
-        winningPlayer: "Me"
-        , opponents: [
-            "Tom Tubon"
-            , "Taylor"
-            , "Jack"
-            , "Stephanie"
-        ]
-        , actions: []
-    }
-    , {
-        winningPlayer: "Taylor"
-        , opponents: [
-            "Tom Tubon"
-            , "Taylor"
-        ]
-        , actions: []
-    }
-    , {
-        winningPlayer: "Me"
-        , opponents: [
-            "Tom Tubon"
-            , "Jack"
-        ]
-        , actions: []
-    }
-  ];
+  gameResults: GameResult[] = [];
 
   public getPreviousOpponents() {
     return this.getOpponents(this.gameResults);

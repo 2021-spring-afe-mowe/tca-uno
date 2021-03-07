@@ -26,6 +26,7 @@
   <ion-toolbar>
     <ion-input
       placeholder="Enter new player name"
+      [(ngModel)]="newPlayerName"
     >
 
     </ion-input>
@@ -33,6 +34,7 @@
       size="medium"
       slot="end"
       color="medium"
+      (click)="addNewPlayer()"
     >
       +
     </ion-button>
