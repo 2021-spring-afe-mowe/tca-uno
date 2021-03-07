@@ -36,7 +36,7 @@ export class SetupGamePage implements OnInit {
       || this.newPlayerName.toUpperCase() == "NONE"
       || this.availablePlayers.some(x => x.name.toUpperCase() == this.newPlayerName.toUpperCase())
     ) {
-      this.presentToast();
+      this.presentToast('Please enter unique name');
       return;
     }
     
@@ -51,9 +51,9 @@ export class SetupGamePage implements OnInit {
     this.newPlayerName = "";
   }
 
-  async presentToast() {
+  async presentToast(message: string) {
     const toast = await this.toastController.create({
-      message: 'Please enter unique name',
+      message: message,
       duration: 2000,
       color: 'warning'
     });
@@ -62,8 +62,13 @@ export class SetupGamePage implements OnInit {
 
   startGame() {
 
+    if (!this.availablePlayers.some(x => x.checked)) {
+      this.presentToast('Pick at least one opponent');
+      return;
+    }
+
     this.appDataSvc.currentGameStartDateTime = new Date();
-    
+
     this.appDataSvc.currentGameOpponents = [
       ...this.availablePlayers
         .filter(x => x.checked)
