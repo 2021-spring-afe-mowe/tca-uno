@@ -115,7 +115,7 @@ export class PlayGamePage implements OnInit {
         {
           text: `Confirm ${what}`,
           handler: () => {
-            this.appDataSvc.confirmGameEnd(what);
+            this.appDataSvc.confirmGameEnd(what, this.playActions);
             this.router.navigate(["/"]);
         }
         }
@@ -135,7 +135,7 @@ export class PlayGamePage implements OnInit {
           ...this.appDataSvc.currentGameOpponents.map(x => ({
             text: x
             , handler: () => {
-              this.appDataSvc.confirmGameEnd("Lose", x);
+              this.appDataSvc.confirmGameEnd("Lose", this.playActions, x);
               this.router.navigate(["/"]);
             }
           }))

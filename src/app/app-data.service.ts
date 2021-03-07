@@ -65,6 +65,7 @@ export class AppDataService {
 
   confirmGameEnd(
     winLossOrQuit: string
+    , playActions: PlayAction[]
     , nameOfWinner?: string
   ) {
 
@@ -76,7 +77,7 @@ export class AppDataService {
             startDateTime: this.currentGameStartDateTime
             , endDateTime: new Date()
             , opponents: this.currentGameOpponents
-            , actions: []
+            , actions: playActions
             , winningPlayer: "Me"
           };
         break;
@@ -86,7 +87,7 @@ export class AppDataService {
           startDateTime: this.currentGameStartDateTime
           , endDateTime: new Date()
           , opponents: this.currentGameOpponents
-          , actions: []
+          , actions: playActions
           , winningPlayer: nameOfWinner
         };
         break;
@@ -96,7 +97,7 @@ export class AppDataService {
           startDateTime: this.currentGameStartDateTime
           , endDateTime: new Date()
           , opponents: this.currentGameOpponents
-          , actions: []
+          , actions: playActions
           , winningPlayer: "None"
         };
         break;
