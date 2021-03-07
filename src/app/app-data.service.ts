@@ -15,10 +15,10 @@ export interface AvailablePlayerDisplay {
   checked: boolean;
 }
 
-interface PlayAction {
-
+export interface PlayAction {
   actionDateTime: Date;
   action: string;
+  cardDelta: number;
 }
 
 interface GameResult {

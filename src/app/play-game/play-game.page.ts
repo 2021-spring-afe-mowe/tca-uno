@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActionSheetController } from '@ionic/angular';
 import { Router } from '@angular/router';
-import { AppDataService } from '../app-data.service';
+import { AppDataService, PlayAction } from '../app-data.service';
 import { ToastController } from '@ionic/angular';
 
 @Component({
@@ -33,7 +33,14 @@ export class PlayGamePage implements OnInit {
     this.presentLoseActionSheet();
   }
 
-  cardCount = 7;
+  get cardCount() {
+    return this.playActions.reduce(
+      (acc, x) => acc + x.cardDelta
+      , 7
+    );
+  };
+
+  playActions: PlayAction[] = [];
 
   playCard() {
 
@@ -42,19 +49,47 @@ export class PlayGamePage implements OnInit {
       return;
     }
 
-    this.cardCount -= 1;
+    this.playActions = [
+      ...this.playActions
+      , {
+        actionDateTime: new Date()
+        , action: "Play Card"
+        , cardDelta: -1
+      }
+    ];
   }
 
   drawTwo() {
-    this.cardCount += 2;
-  }
+    this.playActions = [
+      ...this.playActions
+      , {
+        actionDateTime: new Date()
+        , action: "Draw Two"
+        , cardDelta: 2
+      }
+    ];
+}
 
   drawFour() {
-    this.cardCount += 4;
+    this.playActions = [
+      ...this.playActions
+      , {
+        actionDateTime: new Date()
+        , action: "Draw Four"
+        , cardDelta: 4
+      }
+    ];
   }
 
   drawTwoForgotUno() {
-    this.cardCount += 2;
+    this.playActions = [
+      ...this.playActions
+      , {
+        actionDateTime: new Date()
+        , action: "Caught Draw Two"
+        , cardDelta: 2
+      }
+    ];
   }
 
   async presentToast(message: string) {
