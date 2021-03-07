@@ -92,6 +92,10 @@ export class PlayGamePage implements OnInit {
     ];
   }
 
+  drawCard() {
+    this.presentDrawCardActionSheet();
+  }
+
   async presentToast(message: string) {
     const toast = await this.toastController.create({
       message: message,
@@ -139,4 +143,43 @@ export class PlayGamePage implements OnInit {
     });
     await actionSheet.present();
   }  
+
+  async presentDrawCardActionSheet() {
+    const actionSheet = await this.actionSheetController.create({
+      header: "Draw card result..."
+      , buttons: [
+        {
+          text: "Played Card"
+          , handler: () => {
+            this.playActions = [
+              ...this.playActions
+              , {
+                actionDateTime: new Date()
+                , action: "Draw Card"
+                , cardDelta: 0 
+              }
+            ];
+          }
+        }
+        , {
+          text: "Didn't Play Card"
+          , handler: () => {
+            this.playActions = [
+              ...this.playActions
+              , {
+                actionDateTime: new Date()
+                , action: "Draw Card"
+                , cardDelta: 1 
+              }
+            ];
+          }
+        }
+        , {
+          text: 'Cancel',
+          role: 'cancel',
+        }
+      ]
+    });
+    await actionSheet.present();
+  } 
 }
