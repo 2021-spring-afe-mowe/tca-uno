@@ -18,6 +18,15 @@ export class HomePage implements OnInit, ViewWillEnter {
   constructor(private appDataSvc: AppDataService) {}
 
   ngOnInit() {
+
+    // Init with blanks before loading via getStarted(), say what ? ? ?
+    this.basicStats = this.appDataSvc.calculateBasicWinLossStats();
+    
+    this.getStarted();
+  }
+
+  async getStarted() {
+    await this.appDataSvc.loadPreviousGameResults();
     this.basicStats = this.appDataSvc.calculateBasicWinLossStats();
   }
 

@@ -43,12 +43,14 @@ interface GameResult {
 export class AppDataService {
 
   constructor(private storage: Storage) { 
-    this.loadPreviousGameResults();
+    //this.loadPreviousGameResults();
   }
 
   async loadPreviousGameResults() {
     const data = await this.storage.get("tcaUnoGameResults");
-    console.log("Storage data:", data);
+    //console.log("loadPreviousGameResults()", data);
+    this.gameResults = JSON.parse(data);
+    //console.log("loadPreviousGameResults()", this.gameResults);
   }
 
   //
