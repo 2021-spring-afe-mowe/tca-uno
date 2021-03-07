@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { 
   AppDataService
 } from '../app-data.service';
@@ -9,7 +10,10 @@ import {
 })
 export class SetupGamePage implements OnInit {
 
-  constructor(private appDataSvc: AppDataService) { }
+  constructor(
+    private appDataSvc: AppDataService
+    , private router: Router
+  ) { }
 
   availablePlayers = [];
 
@@ -32,4 +36,14 @@ export class SetupGamePage implements OnInit {
     this.newPlayerName = "";
   }
 
+  startGame() {
+
+    this.appDataSvc.currentGameOpponents = [
+      ...this.availablePlayers
+        .filter(x => x.checked)
+        .map(x => x.name)
+    ];
+
+    this.router.navigate(["/play-game"]);
+  }
 }
