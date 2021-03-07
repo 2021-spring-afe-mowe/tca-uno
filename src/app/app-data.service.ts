@@ -51,7 +51,10 @@ export class AppDataService {
   currentGameStartDateTime: Date;
   currentGameOpponents: string[];
 
-  confirmGameEnd(winLossOrQuit: string) {
+  confirmGameEnd(
+    winLossOrQuit: string
+    , nameOfWinner?: string
+  ) {
 
     let newGameResult: GameResult;
 
@@ -67,6 +70,13 @@ export class AppDataService {
         break;
 
       case "Lose":
+        newGameResult = {
+          startDateTime: this.currentGameStartDateTime
+          , endDateTime: new Date()
+          , opponents: this.currentGameOpponents
+          , actions: []
+          , winningPlayer: nameOfWinner
+        };
         break;
 
       case "Quit":

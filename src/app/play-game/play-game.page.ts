@@ -20,27 +20,53 @@ export class PlayGamePage implements OnInit {
   }
 
   winGame() {
-    this.presentActionSheet("Win");
+    this.presentWinQuitActionSheet("Win");
   }
 
   quitGame() {
-    this.presentActionSheet("Quit");
+    this.presentWinQuitActionSheet("Quit");
   }
 
-  async presentActionSheet(what: string) {
+  loseGame() {
+    this.presentLoseActionSheet();
+  }
+
+  async presentWinQuitActionSheet(what: string) {
     const actionSheet = await this.actionSheetController.create({
-      buttons: [{
-        text: `Confirm ${what}`,
-        handler: () => {
-          this.appDataSvc.confirmGameEnd(what);
-          this.router.navigate(["/"]);
-      }
-      }
-    , {
-        text: 'Cancel',
-        role: 'cancel',
-      }]
+      buttons: [
+        {
+          text: `Confirm ${what}`,
+          handler: () => {
+            this.appDataSvc.confirmGameEnd(what);
+            this.router.navigate(["/"]);
+        }
+        }
+        , {
+          text: 'Cancel',
+          role: 'cancel',
+        }
+      ]
     });
     await actionSheet.present();
   }
+
+  async presentLoseActionSheet() {
+    const actionSheet = await this.actionSheetController.create({
+      header: "Choose winner..."
+      , buttons: [
+          ...this.appDataSvc.currentGameOpponents.map(x => ({
+            text: x
+            , handler: () => {
+              this.appDataSvc.confirmGameEnd("Lose", x);
+              this.router.navigate(["/"]);
+            }
+          }))
+        , {
+          text: 'Cancel',
+          role: 'cancel',
+        }
+      ]
+    });
+    await actionSheet.present();
+  }  
 }
