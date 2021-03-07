@@ -150,4 +150,8 @@ export class AppDataService {
           , checked: false
     }))
   ;
+
+  clearData() {
+    this.storage.set("tcaUnoGameResults", JSON.stringify([]));
+  }
 }
