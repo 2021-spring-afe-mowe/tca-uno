@@ -62,6 +62,8 @@ export class SetupGamePage implements OnInit {
 
   startGame() {
 
+    this.appDataSvc.currentGameStartDateTime = new Date();
+    
     this.appDataSvc.currentGameOpponents = [
       ...this.availablePlayers
         .filter(x => x.checked)

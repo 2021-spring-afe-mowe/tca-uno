@@ -51,6 +51,36 @@ export class AppDataService {
   currentGameStartDateTime: Date;
   currentGameOpponents: string[];
 
+  confirmGameEnd(winLossOrQuit: string) {
+
+    let newGameResult: GameResult;
+
+    switch (winLossOrQuit) {
+      case "Win":
+          newGameResult = {
+            startDateTime: this.currentGameStartDateTime
+            , endDateTime: new Date()
+            , opponents: this.currentGameOpponents
+            , actions: []
+            , winningPlayer: "Me"
+          };
+        break;
+
+      case "Lose":
+        break;
+
+      case "Quit":
+        break;
+    }
+
+    this.gameResults = [
+      ...this.gameResults
+      , newGameResult
+    ];
+
+    console.log(this.gameResults);
+  }
+
   calculateBasicWinLossStats(): BasicStatsDisplay {
 
     const wins = this.gameResults.filter(x => x.winningPlayer == "Me").length;
