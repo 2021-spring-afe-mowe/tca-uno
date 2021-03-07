@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActionSheetController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { AppDataService } from '../app-data.service';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-play-game',
@@ -14,6 +15,7 @@ export class PlayGamePage implements OnInit {
     private actionSheetController: ActionSheetController
     , private router: Router
     , private appDataSvc: AppDataService
+    , private toastController: ToastController
     ) { }
 
   ngOnInit() {
@@ -34,7 +36,22 @@ export class PlayGamePage implements OnInit {
   cardCount = 7;
 
   playCard() {
+
+    if (this.cardCount == 0) {
+      this.presentToast('You sure?');
+      return;
+    }
+
     this.cardCount -= 1;
+  }
+
+  async presentToast(message: string) {
+    const toast = await this.toastController.create({
+      message: message,
+      duration: 2000,
+      color: 'warning'
+    });
+    toast.present();
   }
 
   async presentWinQuitActionSheet(what: string) {
