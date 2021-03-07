@@ -6,6 +6,7 @@ import {
 
 import { ViewWillEnter } from '@ionic/angular';
 import { ActionSheetController } from '@ionic/angular';
+import { read, write } from 'clipboardy';
 
 @Component({
   selector: 'app-home',
@@ -52,7 +53,13 @@ export class HomePage implements OnInit, ViewWillEnter {
           , handler: () => {
             this.appDataSvc.clearData();
             this.getStarted();
-  }
+          }
+        }
+        , {
+          text: "Copy to Clipboard"
+          , handler: () => {
+            this.hackToClipboard(this.appDataSvc.gameResults);
+          }
         }
         , {
           text: 'Cancel',
@@ -62,4 +69,11 @@ export class HomePage implements OnInit, ViewWillEnter {
     });
     await actionSheet.present();
   }
+
+  hackToClipboard = async (data) => {
+    await write(JSON.stringify(data));
+    //const dataRead = await read();
+    //console.log(dataRead);
+  }
+
 }
