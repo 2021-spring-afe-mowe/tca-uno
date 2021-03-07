@@ -47,6 +47,7 @@ export class AppDataService {
   }
 
   async loadPreviousGameResults() {
+    await this.storage.ready();
     const data = await this.storage.get("tcaUnoGameResults");
     //console.log("loadPreviousGameResults()", data);
     this.gameResults = JSON.parse(data);
