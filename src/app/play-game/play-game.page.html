@@ -33,10 +33,24 @@
         style="flex: auto"
         size="large"
         color="light"
-        (click)="drawCard()"
+        (click)="drawCard(true)"
       >
-      <ion-text color="warning">
-        Drew Card
+      <ion-text color="success">
+        Drew One &amp; Played
+      </ion-text>
+
+      </ion-button>
+    </ion-item>
+
+    <ion-item>
+      <ion-button
+        style="flex: auto"
+        size="large"
+        color="light"
+        (click)="drawCard(false)"
+      >
+      <ion-text color="danger">
+        Drew One &amp; Didn't Play
       </ion-text>
 
       </ion-button>
