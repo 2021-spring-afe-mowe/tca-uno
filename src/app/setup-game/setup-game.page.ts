@@ -46,7 +46,7 @@ export class SetupGamePage implements OnInit {
         name: this.newPlayerName
         , checked: true // Assume adding name to play with this player right away ! ! !
       }
-    ];
+    ].sort((a, b) => a.name.toUpperCase() > b.name.toUpperCase() ? 1 : -1);
 
     this.newPlayerName = "";
   }
