@@ -31,6 +31,12 @@ export class PlayGamePage implements OnInit {
     this.presentLoseActionSheet();
   }
 
+  cardCount = 7;
+
+  playCard() {
+    this.cardCount -= 1;
+  }
+
   async presentWinQuitActionSheet(what: string) {
     const actionSheet = await this.actionSheetController.create({
       buttons: [

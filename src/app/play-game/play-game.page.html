@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Hand: 7 cards
+      Hand: {{ cardCount }} card<span *ngIf="cardCount != 1">s</span>
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -20,6 +20,7 @@
         style="flex: auto"
         size="large"
         color="light"
+        (click)="playCard()"
       >
       <ion-text color="success">
         Play Card
