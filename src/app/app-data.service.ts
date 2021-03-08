@@ -131,10 +131,48 @@ export class AppDataService {
   }
 
   calculateHandSizeFacts() {
+
+    const gamesWithWinIndicatorDateAndArrayOfHandSize = this.gameResults.map(x => ({
+      win: x.winningPlayer == "Me"
+      , date: x.endDateTime
+      , actions: x.actions.reduce(
+        (acc, y) => [
+          ...acc
+          , acc[acc.length - 1] + y.cardDelta
+        ]
+        , [7]
+      )
+    }));
+
+    const maxHand = Math.max(
+      ...gamesWithWinIndicatorDateAndArrayOfHandSize.reduce(
+        (acc, x) => [
+          ...acc
+          , ...x.actions
+        ]
+        , []
+      )
+    );
+
+    const maxHandWin = Math.max(
+      ...gamesWithWinIndicatorDateAndArrayOfHandSize
+        .filter(x => x.win)
+        .reduce(
+          (acc, x) => [
+            ...acc
+            , ...x.actions
+          ]
+          , []
+        )
+    );
+
+
+    console.log(gamesWithWinIndicatorDateAndArrayOfHandSize);
+
     return {
-      largestHand: 11
+      largestHand: maxHand
       , largestHandDate: "12/24/2000"
-      , largestHandWithWin: 8
+      , largestHandWithWin: maxHandWin
       , largestHandWithWinDate: "2/14/2021"
     };
   }
