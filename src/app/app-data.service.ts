@@ -176,20 +176,48 @@ export class AppDataService {
   }
 
   calculateLeaderboard() {
-    return [
-      {
-        name: "Jack"
-        , wins: 3
-        , losses: 0
-        , winningPercent: 1
-      }
-      , {
-        name: "Tom"
-        , wins: 0
-        , losses: 3
-        , winningPercent: 0
-      }
-    ];
+
+    const gameResultsGroupedByPlayers = this.gameResults
+
+      // Make sure a "Me" is always in a new players array used for grouping.
+      .map(x => ({
+        ...x
+        , players: [
+          "Me"
+          , ...x.opponents
+        ]
+      }))
+      .reduce(
+        (acc, x) => {
+          x.players.forEach(y => acc.set(y, [...acc.get(y)|| [], x] ));
+          return acc;
+        }
+        , new Map()
+      )
+    ;
+
+    console.log([...gameResultsGroupedByPlayers]);
+
+    const finalShape = [...gameResultsGroupedByPlayers]
+      .map(x => {
+          const wins = x[1].filter(y => y.winningPlayer == x[0]).length;
+          const losses = x[1].filter(y => y.winningPlayer != x[0] && y.winningPlayer != "None").length;
+
+          return {
+            name: x[0]
+            , wins: wins
+            , losses: losses 
+            , winningPercent: wins / (wins + losses)
+          }
+        }
+      )
+
+      .sort((a, b) => a.winningPercent > b.winningPercent ? -1 : 1)
+    ;
+
+    console.log(finalShape);
+
+    return finalShape;
   }
 
   gameResults: GameResult[] = [];
