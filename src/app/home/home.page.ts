@@ -21,6 +21,8 @@ export class HomePage implements OnInit, ViewWillEnter {
     , largestHandWithWin: 0
   };
 
+  leaderboard = [];
+
   constructor(
     private appDataSvc: AppDataService
     , private actionSheetController: ActionSheetController
@@ -31,7 +33,8 @@ export class HomePage implements OnInit, ViewWillEnter {
     // Init with blanks before loading via getStarted(), say what ? ? ?
     this.basicStats = this.appDataSvc.calculateBasicWinLossStats();
     this.handSizeFacts = this.appDataSvc.calculateHandSizeFacts();
-    
+    this.leaderboard = this.appDataSvc.calculateLeaderboard();
+
     this.getStarted();
   }
 
@@ -39,11 +42,13 @@ export class HomePage implements OnInit, ViewWillEnter {
     await this.appDataSvc.loadPreviousGameResults();
     this.basicStats = this.appDataSvc.calculateBasicWinLossStats();
     this.handSizeFacts = this.appDataSvc.calculateHandSizeFacts();
+    this.leaderboard = this.appDataSvc.calculateLeaderboard();
   }
 
   ionViewWillEnter() {
     this.basicStats = this.appDataSvc.calculateBasicWinLossStats();
     this.handSizeFacts = this.appDataSvc.calculateHandSizeFacts();
+    this.leaderboard = this.appDataSvc.calculateLeaderboard();
   }
 
   showOptions() {

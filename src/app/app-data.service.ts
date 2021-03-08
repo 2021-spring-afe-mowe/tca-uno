@@ -175,6 +175,23 @@ export class AppDataService {
     };
   }
 
+  calculateLeaderboard() {
+    return [
+      {
+        name: "Jack"
+        , wins: 3
+        , losses: 0
+        , winningPercent: 1
+      }
+      , {
+        name: "Tom"
+        , wins: 0
+        , losses: 3
+        , winningPercent: 0
+      }
+    ];
+  }
+
   gameResults: GameResult[] = [];
 
   public getPreviousOpponents() {

@@ -79,13 +79,41 @@
         >
           <ion-card-header>
             <ion-card-subtitle>Leaderboard</ion-card-subtitle>
-            <ion-card-title>
-              Coming soon ! ! !
-            </ion-card-title>
           </ion-card-header>
         
           <ion-card-content>
-            Coming soon ! ! !
+            <ion-grid>
+              <ion-row>
+                <ion-col>W</ion-col>
+                <ion-col>L</ion-col>
+                <ion-col>%</ion-col>
+                <ion-col></ion-col>
+              </ion-row>
+              <ion-row
+                *ngFor="let person of leaderboard"
+              >
+                <ion-col>
+                  <div>
+                    {{ person.wins }}
+                  </div>
+                </ion-col>
+                <ion-col>
+                  <div>
+                    {{ person.losses }}
+                  </div>
+                </ion-col>
+                <ion-col>
+                  <div>
+                    {{ person.winningPercent.toFixed(3) }}
+                  </div>
+                </ion-col>
+                <ion-col>
+                  <div>
+                    {{ person.name }}
+                  </div>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
           </ion-card-content>
         </ion-card>
       </ion-item>
