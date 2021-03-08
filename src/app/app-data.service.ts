@@ -134,7 +134,6 @@ export class AppDataService {
 
     const gamesWithWinIndicatorDateAndArrayOfHandSize = this.gameResults.map(x => ({
       win: x.winningPlayer == "Me"
-      , date: x.endDateTime
       , actions: x.actions.reduce(
         (acc, y) => [
           ...acc
@@ -166,12 +165,11 @@ export class AppDataService {
         )
     );
 
-
     console.log(gamesWithWinIndicatorDateAndArrayOfHandSize);
 
     return {
-      largestHand: maxHand
-      , largestHandWithWin: maxHandWin
+      largestHand: isFinite(maxHand) ? maxHand : 0
+      , largestHandWithWin: isFinite(maxHandWin) ? maxHandWin : 0
     };
   }
 
