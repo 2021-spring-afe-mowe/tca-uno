@@ -18,9 +18,7 @@ export class HomePage implements OnInit, ViewWillEnter {
   basicStats: BasicStatsDisplay;
   handSizeFacts = {
     largestHand: 0
-    , largestHandDate: ""
     , largestHandWithWin: 0
-    , largestHandWithWinDate: ""
   };
 
   constructor(

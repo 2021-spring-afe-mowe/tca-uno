@@ -171,9 +171,7 @@ export class AppDataService {
 
     return {
       largestHand: maxHand
-      , largestHandDate: "12/24/2000"
       , largestHandWithWin: maxHandWin
-      , largestHandWithWinDate: "2/14/2021"
     };
   }
 
