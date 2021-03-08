@@ -104,20 +104,20 @@
               style="font-size: 4em;"
               color="light"
             >
-              12
+              {{ handSizeFacts.largestHand }}
             </ion-text>
             <small>
-              Largest on 12/25/2020
+              Largest on {{ handSizeFacts.largestHandDate }}
             </small> 
             <br>
             <ion-text
               style="font-size: 2.5em;"
               color="success"
             >
-              10
+              {{ handSizeFacts.largestHandWithWin}}
             </ion-text>
             <small>
-              Largest with win on 1/12/2021
+              Largest with win on {{ handSizeFacts.largestHandWithWinDate }}
             </small>             
           </ion-card-content>
         </ion-card>

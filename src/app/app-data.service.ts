@@ -130,6 +130,15 @@ export class AppDataService {
     );
   }
 
+  calculateHandSizeFacts() {
+    return {
+      largestHand: 11
+      , largestHandDate: "12/24/2000"
+      , largestHandWithWin: 8
+      , largestHandWithWinDate: "2/14/2021"
+    };
+  }
+
   gameResults: GameResult[] = [];
 
   public getPreviousOpponents() {

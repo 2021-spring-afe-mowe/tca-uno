@@ -16,6 +16,12 @@ import { read, write } from 'clipboardy';
 export class HomePage implements OnInit, ViewWillEnter {
 
   basicStats: BasicStatsDisplay;
+  handSizeFacts = {
+    largestHand: 0
+    , largestHandDate: ""
+    , largestHandWithWin: 0
+    , largestHandWithWinDate: ""
+  };
 
   constructor(
     private appDataSvc: AppDataService
@@ -26,6 +32,7 @@ export class HomePage implements OnInit, ViewWillEnter {
 
     // Init with blanks before loading via getStarted(), say what ? ? ?
     this.basicStats = this.appDataSvc.calculateBasicWinLossStats();
+    this.handSizeFacts = this.appDataSvc.calculateHandSizeFacts();
     
     this.getStarted();
   }
@@ -33,10 +40,12 @@ export class HomePage implements OnInit, ViewWillEnter {
   async getStarted() {
     await this.appDataSvc.loadPreviousGameResults();
     this.basicStats = this.appDataSvc.calculateBasicWinLossStats();
+    this.handSizeFacts = this.appDataSvc.calculateHandSizeFacts();
   }
 
   ionViewWillEnter() {
     this.basicStats = this.appDataSvc.calculateBasicWinLossStats();
+    this.handSizeFacts = this.appDataSvc.calculateHandSizeFacts();
   }
 
   showOptions() {
