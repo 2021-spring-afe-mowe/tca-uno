@@ -100,22 +100,30 @@
                 *ngFor="let person of leaderboard"
               >
                 <ion-col>
-                  <div>
+                  <div
+                    [style.font-weight]=" person.name == 'Me' ? 'bold' : 'inherit'"
+                  >
                     {{ person.wins }}
                   </div>
                 </ion-col>
                 <ion-col>
-                  <div>
+                  <div
+                    [style.font-weight]=" person.name == 'Me' ? 'bold' : 'inherit'"
+                  >
                     {{ person.losses }}
                   </div>
                 </ion-col>
                 <ion-col>
-                  <div>
+                  <div
+                    [style.font-weight]=" person.name == 'Me' ? 'bold' : 'inherit'"
+                  >
                     {{ person.winningPercent.toFixed(3) }}
                   </div>
                 </ion-col>
                 <ion-col>
-                  <div>
+                  <div
+                    [style.font-weight]=" person.name == 'Me' ? 'bold' : 'inherit'"
+                  >
                     {{ person.name }}
                   </div>
                 </ion-col>
