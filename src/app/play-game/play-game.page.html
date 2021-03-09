@@ -12,17 +12,17 @@
   >
 
     <ion-item-divider>
-      Record your actions...
+      My play...
     </ion-item-divider>
   
     <ion-item>
       <ion-button
         style="flex: auto"
-        size="large"
-        color="light"
+        size="default"
+        color="dark"
         (click)="playCard()"
       >
-      <ion-text color="success">
+      <ion-text>
         Played Card
       </ion-text>
     </ion-button>
@@ -31,12 +31,12 @@
     <ion-item>
       <ion-button
         style="flex: auto"
-        size="large"
+        size="default"
         color="light"
         (click)="drawCard(true)"
       >
-      <ion-text color="success">
-        Drew 1 / Played
+      <ion-text>
+        Drew / Played
       </ion-text>
 
       </ion-button>
@@ -45,26 +45,30 @@
     <ion-item>
       <ion-button
         style="flex: auto"
-        size="large"
+        size="default"
         color="light"
         (click)="drawCard(false)"
       >
-      <ion-text color="danger">
-        Drew 1 / Didn't Play
+      <ion-text>
+        Drew / Didn't Play
       </ion-text>
 
       </ion-button>
     </ion-item>
+    
+    <ion-item-divider>
+      Mean friends...
+    </ion-item-divider>
 
     <ion-item>
       <ion-button
         style="flex: auto"
-        size="large"
-        color="light"
+        size="default"
+        color="dark"
         (click)="drawTwo()"
       >
-      <ion-text color="danger">
-        Drew 2
+      <ion-text>
+        Drew Two
       </ion-text>
       </ion-button>
     </ion-item>
@@ -72,12 +76,12 @@
     <ion-item>
       <ion-button
         style="flex: auto"
-        size="large"
-        color="light"
+        size="default"
+        color="dark"
         (click)="drawFour()"
       >
-      <ion-text color="danger">
-        Drew 4
+      <ion-text>
+        Drew Four
       </ion-text>
     </ion-button>
     </ion-item>
@@ -89,12 +93,12 @@
     <ion-item>
       <ion-button
         style="flex: auto"
-        size="large"
+        size="default"
         color="light"
         (click)="drawTwoForgotUno()"
       >
-        <ion-text color="danger">
-          Caught / Drew 2
+        <ion-text>
+          Caught / Drew Two
         </ion-text>
       </ion-button>
     </ion-item>
@@ -106,7 +110,7 @@
     <ion-item>
       <ion-button
         style="flex: auto"
-        size="large"
+        size="default"
         color="light"
         [attr.disabled]="playActions.length == 0"
         (click)="undoLastPlayAction()"
