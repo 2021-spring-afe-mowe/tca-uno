@@ -3,12 +3,8 @@
     <ion-title>
       Mi Uno
     </ion-title>
-    <ion-buttons
-      slot="end"
-    >
-      <ion-button
-        (click)="showOptions()"
-      >
+    <ion-buttons slot="end">
+      <ion-button (click)="showOptions()">
         ...
       </ion-button>
     </ion-buttons>
@@ -23,148 +19,138 @@
   </ion-header>
 
 
-    <ion-list
-      lines="none"
-    >
+  <ion-list lines="none">
 
-      <ion-item>
-        <ion-button
-          size="large"
-          style="flex: auto; margin-top: 20px; margin-bottom: 20px;"
-          color="success"
-          [routerLink]="['/setup-game']"
-        >
-          Play Uno
-        </ion-button>
-      </ion-item>
+    <ion-item>
+      <ion-button size="large" style="flex: auto; margin-top: 20px; margin-bottom: 20px;" color="success"
+        [routerLink]="['/setup-game']">
+        Play Uno
+      </ion-button>
+    </ion-item>
 
-      <ion-item-divider>
-        Browse your stats...
-      </ion-item-divider>
-      
-      <ion-item>
-        <ion-card
-          style="flex: auto; margin-left: 0; margin-right: 0; margin-bottom: 0;"
-          color="dark"
-        >
-          <ion-card-header>
-            <ion-card-subtitle>Overall</ion-card-subtitle>
-            <ion-card-title
-              style="font-size: 2.5em;"
-            >
-              {{ basicStats.wins }} Win<span *ngIf="basicStats.wins != 1">s</span> /
-              <small>
-                {{ basicStats.losses }} Loss<span *ngIf="basicStats.losses != 1">es</span>
-              </small>
-            </ion-card-title>
-          </ion-card-header>
-        
-          <ion-card-content>
-            Winning Percent: {{ basicStats.winningPercent | percent }}
-            <br>
-            <br>
-            Total Games: {{ basicStats.numberOfGames }}
-            <br>
-            Quits: {{ basicStats.quits }}
-            <br>
-            Completion Percent: {{ basicStats.completionPercent | percent }}
-          </ion-card-content>
-        </ion-card>
-      </ion-item>
+    <ion-item-divider>
+      Browse your stats...
+    </ion-item-divider>
 
-      <ion-item>
-        <ion-card
-          style="flex: auto; margin-left: 0; margin-right: 0; margin-bottom: 0;"
-          color="light"
-        >
-          <ion-card-header>
-            <ion-card-subtitle>Leaderboard</ion-card-subtitle>
-          </ion-card-header>
-        
-          <ion-card-content>
-            <ion-grid>
-              <ion-row
-                *ngIf="leaderboard.length == 0"
-              >
-                Play some games ! ! !
-              </ion-row>
-              <ion-row
-                *ngIf="leaderboard.length > 0"
-              >
-                <ion-col>W</ion-col>
-                <ion-col>L</ion-col>
-                <ion-col>%</ion-col>
-                <ion-col></ion-col>
-              </ion-row>
-              <ion-row
-                *ngFor="let person of leaderboard"
-              >
-                <ion-col>
-                  <div
-                    [style.font-weight]=" person.name == 'Me' ? 'bold' : 'inherit'"
-                  >
-                    {{ person.wins }}
-                  </div>
-                </ion-col>
-                <ion-col>
-                  <div
-                    [style.font-weight]=" person.name == 'Me' ? 'bold' : 'inherit'"
-                  >
-                    {{ person.losses }}
-                  </div>
-                </ion-col>
-                <ion-col>
-                  <div
-                    [style.font-weight]=" person.name == 'Me' ? 'bold' : 'inherit'"
-                  >
-                    {{ person.winningPercent.toFixed(3) }}
-                  </div>
-                </ion-col>
-                <ion-col>
-                  <div
-                    [style.font-weight]=" person.name == 'Me' ? 'bold' : 'inherit'"
-                  >
-                    {{ person.name }}
-                  </div>
-                </ion-col>
-              </ion-row>
-            </ion-grid>
-          </ion-card-content>
-        </ion-card>
-      </ion-item>
-
-      <ion-item>
-        <ion-card
-          style="flex: auto; margin-left: 0; margin-right: 0; margin-bottom: 0;"
-          color="dark"
-        >
-          <ion-card-header>
-            <ion-card-subtitle>Hand Size Facts</ion-card-subtitle>
-          </ion-card-header>
-        
-          <ion-card-content>
-            <ion-text
-              style="font-size: 4em;"
-              color="light"
-            >
-              {{ handSizeFacts.largestHand }}
-            </ion-text>
+    <ion-item>
+      <ion-card style="flex: auto; margin-left: 0; margin-right: 0; margin-bottom: 0;" color="dark">
+        <ion-card-header>
+          <ion-card-subtitle>Overall</ion-card-subtitle>
+          <ion-card-title style="font-size: 2.5em;">
+            {{ basicStats.wins }} Win<span *ngIf="basicStats.wins != 1">s</span> /
             <small>
-              Largest Hand Ever
-            </small> 
-            <br>
-            <ion-text
-              style="font-size: 2.5em;"
-              color="success"
-            >
-              {{ handSizeFacts.largestHandWithWin}}
-            </ion-text>
-            <small>
-              Largest Hand with Win
-            </small>             
-          </ion-card-content>
-        </ion-card>
-      </ion-item>
+              {{ basicStats.losses }} Loss<span *ngIf="basicStats.losses != 1">es</span>
+            </small>
+          </ion-card-title>
+        </ion-card-header>
 
-    </ion-list>
+        <ion-card-content>
+          Winning Percent: {{ basicStats.winningPercent | percent }}
+          <br>
+          <br>
+          Total Games: {{ basicStats.numberOfGames }}
+          <br>
+          Quits: {{ basicStats.quits }}
+          <br>
+          Completion Percent: {{ basicStats.completionPercent | percent }}
+        </ion-card-content>
+      </ion-card>
+    </ion-item>
+
+    <ion-item>
+      <ion-card style="flex: auto; margin-left: 0; margin-right: 0; margin-bottom: 0;" color="light">
+        <ion-card-header>
+          <ion-card-subtitle>Leaderboard</ion-card-subtitle>
+        </ion-card-header>
+
+        <ion-card-content>
+          <ion-grid>
+            <ion-row *ngIf="leaderboard.length == 0">
+              Play some games ! ! !
+            </ion-row>
+            <ion-row *ngIf="leaderboard.length > 0">
+              <ion-col>W</ion-col>
+              <ion-col>L</ion-col>
+              <ion-col>%</ion-col>
+              <ion-col></ion-col>
+            </ion-row>
+            <ion-row *ngFor="let person of leaderboard">
+              <ion-col>
+                <div [style.font-weight]=" person.name == 'Me' ? 'bold' : 'inherit'">
+                  {{ person.wins }}
+                </div>
+              </ion-col>
+              <ion-col>
+                <div [style.font-weight]=" person.name == 'Me' ? 'bold' : 'inherit'">
+                  {{ person.losses }}
+                </div>
+              </ion-col>
+              <ion-col>
+                <div [style.font-weight]=" person.name == 'Me' ? 'bold' : 'inherit'">
+                  {{ person.winningPercent.toFixed(3) }}
+                </div>
+              </ion-col>
+              <ion-col>
+                <div [style.font-weight]=" person.name == 'Me' ? 'bold' : 'inherit'">
+                  {{ person.name }}
+                </div>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card-content>
+      </ion-card>
+    </ion-item>
+
+    <ion-item>
+      <ion-card style="flex: auto; margin-left: 0; margin-right: 0; margin-bottom: 0;" color="dark">
+        <ion-card-header>
+          <ion-card-subtitle>Hand Size Facts</ion-card-subtitle>
+        </ion-card-header>
+
+        <ion-card-content>
+          <ion-text style="font-size: 4em;" color="light">
+            {{ handSizeFacts.largestHand }}
+          </ion-text>
+          <small>
+            Largest Hand Ever
+          </small>
+          <br>
+          <ion-text style="font-size: 2.5em;" color="success">
+            {{ handSizeFacts.largestHandWithWin}}
+          </ion-text>
+          <small>
+            Largest Hand with Win
+          </small>
+        </ion-card-content>
+      </ion-card>
+    </ion-item>
+
+    <ion-item>
+      <ion-card style="flex: auto; margin-left: 0; margin-right: 0; margin-bottom: 0;" color="light">
+        <ion-card-header>
+          <ion-card-subtitle>Game Time Facts</ion-card-subtitle>
+        </ion-card-header>
+
+        <ion-card-content>
+          <ion-text style="font-size: 1.75em;" color="dark">
+            {{ gameTimeFacts.longest }}
+          </ion-text>
+          <br>
+          <small>
+            Longest Game Ever
+          </small>
+          <br>
+          <br>
+          <ion-text style="font-size: 1.75em;" color="dark">
+            {{ gameTimeFacts.shortest }}
+          </ion-text>
+          <br>
+          <small>
+            Shortest Game Ever
+          </small>
+        </ion-card-content>
+      </ion-card>
+    </ion-item>
+
+  </ion-list>
 </ion-content>

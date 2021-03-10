@@ -23,6 +23,11 @@ export class HomePage implements OnInit, ViewWillEnter {
 
   leaderboard = [];
 
+  gameTimeFacts = {
+    longest: ""
+    , shortest: ""
+  };
+
   constructor(
     private appDataSvc: AppDataService
     , private actionSheetController: ActionSheetController
@@ -34,6 +39,7 @@ export class HomePage implements OnInit, ViewWillEnter {
     this.basicStats = this.appDataSvc.calculateBasicWinLossStats();
     this.handSizeFacts = this.appDataSvc.calculateHandSizeFacts();
     this.leaderboard = this.appDataSvc.calculateLeaderboard();
+    this.gameTimeFacts = this.appDataSvc.calculateGameTimeFacts();
 
     this.getStarted();
   }
@@ -43,12 +49,14 @@ export class HomePage implements OnInit, ViewWillEnter {
     this.basicStats = this.appDataSvc.calculateBasicWinLossStats();
     this.handSizeFacts = this.appDataSvc.calculateHandSizeFacts();
     this.leaderboard = this.appDataSvc.calculateLeaderboard();
+    this.gameTimeFacts = this.appDataSvc.calculateGameTimeFacts();
   }
 
   ionViewWillEnter() {
     this.basicStats = this.appDataSvc.calculateBasicWinLossStats();
     this.handSizeFacts = this.appDataSvc.calculateHandSizeFacts();
     this.leaderboard = this.appDataSvc.calculateLeaderboard();
+    this.gameTimeFacts = this.appDataSvc.calculateGameTimeFacts();
   }
 
   showOptions() {
