@@ -254,8 +254,8 @@ export class AppDataService {
     console.log(gamesWithDurations);
 
     return {
-      longest: this.timeConversion(Math.max(...gamesWithDurations))
-      , shortest: this.timeConversion(Math.min(...gamesWithDurations))
+      longest: gamesWithDurations.length > 0 ? this.timeConversion(Math.max(...gamesWithDurations)) : "n/a"
+      , shortest: gamesWithDurations.length > 0 ? this.timeConversion(Math.min(...gamesWithDurations)) : "n/a"
     };
   }
 
