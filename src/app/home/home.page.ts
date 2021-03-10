@@ -105,4 +105,11 @@ export class HomePage implements OnInit, ViewWillEnter {
   hackFromClipboard = async () => {
     this.appDataSvc.updateWithPastedGameResults(JSON.parse(await read()));
   }
+
+  get caughtNumber() {
+    return this.appDataSvc.gameResults.reduce(
+      (acc, x) => acc + x.actions.filter(y => y.action.startsWith("Caught")).length
+      , 0
+    );
+  }
 }
