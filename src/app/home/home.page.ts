@@ -82,6 +82,12 @@ export class HomePage implements OnInit, ViewWillEnter {
           }
         }
         , {
+          text: "Paste from Clipboard"
+          , handler: () => {
+            this.hackFromClipboard();
+          }
+        }
+        , {
           text: 'Cancel',
           role: 'cancel',
         }
@@ -96,4 +102,7 @@ export class HomePage implements OnInit, ViewWillEnter {
     //console.log(dataRead);
   }
 
+  hackFromClipboard = async () => {
+    this.appDataSvc.updateWithPastedGameResults(JSON.parse(await read()));
+  }
 }

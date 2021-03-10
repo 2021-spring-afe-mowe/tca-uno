@@ -112,6 +112,11 @@ export class AppDataService {
     console.log("confirmGameEnd()", this.gameResults);
   }
 
+  updateWithPastedGameResults(results) {
+    this.gameResults = results;
+    this.storage.set("tcaUnoGameResults", JSON.stringify(this.gameResults));
+  }
+
   calculateBasicWinLossStats(): BasicStatsDisplay {
 
     const wins = this.gameResults.filter(x => x.winningPlayer == "Me").length;
