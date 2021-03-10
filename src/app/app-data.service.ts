@@ -205,7 +205,7 @@ export class AppDataService {
             name: x[0]
             , wins: wins
             , losses: losses 
-            , winningPercent: wins / (wins + losses)
+            , winningPercent: (wins / (wins + losses)) || 0
           }
         }
       )
