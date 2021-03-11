@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1615429533191,
+  "timestamp": 1615448570219,
   "index": "https://2021-spring-afe-mowe.github.io/tca-uno/index.html",
   "assetGroups": [
     {
@@ -167,7 +167,7 @@
     "https://2021-spring-afe-mowe.github.io/tca-uno/assets/icons/icon-96x96.png": "865fc9902241e27c905a6668bc77c222b5765194",
     "https://2021-spring-afe-mowe.github.io/tca-uno/assets/shapes.svg": "5413e95adabcb2cb639970051f55e0ddb64ace53",
     "https://2021-spring-afe-mowe.github.io/tca-uno/common.2bb3e0bdc0d872b62c01.js": "085cc9bab9d779e8c8a1ce21c4df74ca6c0c6cc9",
-    "https://2021-spring-afe-mowe.github.io/tca-uno/index.html": "ed30c971b0f8094cbfd24fe75ac0e5154583c678",
+    "https://2021-spring-afe-mowe.github.io/tca-uno/index.html": "a4066cc7ab38216a7f57e8e3dc0ed9a3a3931c25",
     "https://2021-spring-afe-mowe.github.io/tca-uno/main.4094e7fd89784b363414.js": "62cbdd80f8c5b195321298377e1f125d8bd87c46",
     "https://2021-spring-afe-mowe.github.io/tca-uno/manifest.webmanifest": "6a9b18e9e458180d7ab40f5429dfe9147b1c882e",
     "https://2021-spring-afe-mowe.github.io/tca-uno/polyfills-core-js.926b2b327e549d9db414.js": "f71279ef311f3c1cecc661b8aabe632959a282f8",
