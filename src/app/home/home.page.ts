@@ -28,6 +28,8 @@ export class HomePage implements OnInit, ViewWillEnter {
     , shortest: ""
   };
 
+  gameSizeStats = [];
+  
   constructor(
     private appDataSvc: AppDataService
     , private actionSheetController: ActionSheetController
@@ -40,6 +42,7 @@ export class HomePage implements OnInit, ViewWillEnter {
     this.handSizeFacts = this.appDataSvc.calculateHandSizeFacts();
     this.leaderboard = this.appDataSvc.calculateLeaderboard();
     this.gameTimeFacts = this.appDataSvc.calculateGameTimeFacts();
+    this.gameSizeStats = this.appDataSvc.calculateGameSizeStats();
 
     this.getStarted();
   }
@@ -50,6 +53,7 @@ export class HomePage implements OnInit, ViewWillEnter {
     this.handSizeFacts = this.appDataSvc.calculateHandSizeFacts();
     this.leaderboard = this.appDataSvc.calculateLeaderboard();
     this.gameTimeFacts = this.appDataSvc.calculateGameTimeFacts();
+    this.gameSizeStats = this.appDataSvc.calculateGameSizeStats();
   }
 
   ionViewWillEnter() {
@@ -57,6 +61,7 @@ export class HomePage implements OnInit, ViewWillEnter {
     this.handSizeFacts = this.appDataSvc.calculateHandSizeFacts();
     this.leaderboard = this.appDataSvc.calculateLeaderboard();
     this.gameTimeFacts = this.appDataSvc.calculateGameTimeFacts();
+    this.gameSizeStats = this.appDataSvc.calculateGameSizeStats();
   }
 
   showOptions() {

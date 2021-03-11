@@ -155,17 +155,59 @@
     <ion-item>
       <ion-card style="flex: auto; margin-left: 0; margin-right: 0; margin-bottom: 0;" color="dark">
         <ion-card-header>
-          <ion-card-subtitle>Caught</ion-card-subtitle>
+          <ion-card-subtitle>Forgot to say "Uno"</ion-card-subtitle>
         </ion-card-header>
 
         <ion-card-content>
           <ion-text style="font-size: 5em;" color="danger">
-            {{ caughtNumber }}
+            {{ caughtNumber }} 
+            <span style="font-size: 0.3em;">times</span>
           </ion-text>
           <br>
-          <small>   
-            Times caught not saying Uno <strong style="font-size: 1.5em;">: - (</strong>
-          </small>
+        </ion-card-content>
+      </ion-card>
+    </ion-item>
+
+    <ion-item>
+      <ion-card style="flex: auto; margin-left: 0; margin-right: 0; margin-bottom: 0;" color="light">
+        <ion-card-header>
+          <ion-card-subtitle>Your Game Size Stats</ion-card-subtitle>
+        </ion-card-header>
+
+        <ion-card-content>
+          <ion-grid>
+            <ion-row *ngIf="gameSizeStats.length == 0">
+              Play some games ! ! !
+            </ion-row>
+            <ion-row *ngIf="gameSizeStats.length > 0">
+              <ion-col>W</ion-col>
+              <ion-col>L</ion-col>
+              <ion-col>%</ion-col>
+              <ion-col>Players</ion-col>
+            </ion-row>
+            <ion-row *ngFor="let stat of gameSizeStats">
+              <ion-col>
+                <div>
+                  {{ stat.wins }}
+                </div>
+              </ion-col>
+              <ion-col>
+                <div>
+                  {{ stat.losses }}
+                </div>
+              </ion-col>
+              <ion-col>
+                <div>
+                  {{ stat.winningPercent.toFixed(3) }}
+                </div>
+              </ion-col>
+              <ion-col>
+                <div>
+                  {{ stat.numberOfPlayers }}
+                </div>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
         </ion-card-content>
       </ion-card>
     </ion-item>

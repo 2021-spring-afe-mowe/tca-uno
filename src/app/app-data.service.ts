@@ -259,6 +259,39 @@ export class AppDataService {
     };
   }
 
+  calculateGameSizeStats() {
+
+    const gameResultsGroupedByNumberOfPlayers = this.gameResults
+      .reduce(
+        (acc, x) => acc.set(x.opponents.length + 1, [...acc.get(x.opponents.length + 1)|| [], x] )
+        , new Map()
+      )
+    ;
+
+    console.log([...gameResultsGroupedByNumberOfPlayers]);
+
+    const finalShape = [...gameResultsGroupedByNumberOfPlayers]
+      .map(x => {
+          const wins = x[1].filter(y => y.winningPlayer == "Me").length;
+          const losses = x[1].filter(y => y.winningPlayer != "Me" && y.winningPlayer != "None").length;
+
+          return {
+            numberOfPlayers: x[0]
+            , wins: wins
+            , losses: losses 
+            , winningPercent: (wins / (wins + losses)) || 0
+          }
+        }
+      )
+
+      .sort((a, b) => a.numberOfPlayers > b.numberOfPlayers ? -1 : 1)
+    ;
+
+    console.log(finalShape);
+
+    return finalShape;
+  }
+
   gameResults: GameResult[] = [];
 
   public getPreviousOpponents() {
