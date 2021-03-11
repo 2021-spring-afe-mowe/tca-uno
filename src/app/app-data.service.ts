@@ -284,7 +284,7 @@ export class AppDataService {
         }
       )
 
-      .sort((a, b) => a.numberOfPlayers > b.numberOfPlayers ? -1 : 1)
+      .sort((a, b) => a.numberOfPlayers > b.numberOfPlayers ? 1 : -1)
     ;
 
     console.log(finalShape);
