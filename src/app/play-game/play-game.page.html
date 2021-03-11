@@ -10,7 +10,7 @@
   <ion-list lines="none">
 
     <ion-item>
-      <ion-card style="flex: auto; margin-left: 0; margin-right: 0; margin-bottom: 0;" color="dark">
+      <ion-card style="flex: auto; margin-left: 0; margin-right: 0; margin-bottom: 0;" color="light">
         <ion-card-header>
           <ion-card-subtitle>
             Play
@@ -18,7 +18,7 @@
         </ion-card-header>
 
         <ion-card-content>
-          <ion-button expand="block" size="default" color="light" (click)="playCard()">
+          <ion-button expand="block" size="default" color="dark" (click)="playCard()">
             <ion-text>
               Played Card
             </ion-text>
@@ -28,7 +28,7 @@
     </ion-item>
 
     <ion-item>
-      <ion-card style="flex: auto; margin-left: 0; margin-right: 0; margin-bottom: 0;" color="light">
+      <ion-card style="flex: auto; margin-left: 0; margin-right: 0; margin-bottom: 0;" color="dark">
         <ion-card-header>
           <ion-card-subtitle>
             Can't Play
@@ -36,12 +36,12 @@
         </ion-card-header>
 
         <ion-card-content>
-          <ion-button expand="block" size="default" color="dark" (click)="drawCard(true)">
+          <ion-button expand="block" size="default" color="light" (click)="drawCard(true)">
             <ion-text>
               Drew &amp; Played
             </ion-text>
           </ion-button>
-          <ion-button expand="block" size="default" color="dark" (click)="drawCard(false)">
+          <ion-button expand="block" size="default" color="light" (click)="drawCard(false)">
             <ion-text>
               Drew &amp; Didn't Play
             </ion-text>
@@ -53,7 +53,7 @@
     </ion-item>
 
     <ion-item>
-      <ion-card style="flex: auto; margin-left: 0; margin-right: 0; margin-bottom: 0;" color="dark">
+      <ion-card style="flex: auto; margin-left: 0; margin-right: 0; margin-bottom: 0;" color="light">
         <ion-card-header>
           <ion-card-subtitle>
             Mean Friends
@@ -61,12 +61,12 @@
         </ion-card-header>
 
         <ion-card-content>
-          <ion-button expand="block" size="default" color="light" (click)="drawTwo()">
+          <ion-button expand="block" size="default" color="dark" (click)="drawTwo()">
             <ion-text>
               Drew Two
             </ion-text>
           </ion-button>
-          <ion-button expand="block" size="default" color="light" (click)="drawFour()">
+          <ion-button expand="block" size="default" color="dark" (click)="drawFour()">
             <ion-text>
               Drew Four
             </ion-text>
@@ -76,7 +76,7 @@
     </ion-item>
 
     <ion-item>
-      <ion-card style="flex: auto; margin-left: 0; margin-right: 0; margin-bottom: 0;" color="light">
+      <ion-card style="flex: auto; margin-left: 0; margin-right: 0; margin-bottom: 0;" color="dark">
         <ion-card-header>
           <ion-card-subtitle>
             Forgot "Uno"
@@ -84,7 +84,7 @@
         </ion-card-header>
 
         <ion-card-content>
-          <ion-button expand="block" size="default" color="dark" (click)="drawTwoForgotUno()">
+          <ion-button expand="block" size="default" color="light" (click)="drawTwoForgotUno()">
             <ion-text>
               Caught &amp; Drew Two
             </ion-text>
@@ -96,7 +96,7 @@
     </ion-item>
 
     <ion-item>
-      <ion-card style="flex: auto; margin-left: 0; margin-right: 0; margin-bottom: 0;" color="dark">
+      <ion-card style="flex: auto; margin-left: 0; margin-right: 0; margin-bottom: 0;" color="light">
         <ion-card-header>
           <ion-card-subtitle>
             Oops
@@ -104,7 +104,7 @@
         </ion-card-header>
 
         <ion-card-content>
-          <ion-button expand="block" size="default" color="light" [attr.disabled]="playActions.length == 0"
+          <ion-button expand="block" size="default" color="dark" [attr.disabled]="playActions.length == 0"
           (click)="undoLastPlayAction()">
           <ion-text>
             Undo
