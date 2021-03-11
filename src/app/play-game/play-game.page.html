@@ -7,154 +7,135 @@
 </ion-header>
 
 <ion-content>
-  <ion-list
-    lines="none"
-  >
+  <ion-list lines="none">
 
-    <ion-item-divider>
-      My play...
-    </ion-item-divider>
-  
     <ion-item>
-      <ion-button
-        style="flex: auto"
-        size="default"
-        color="dark"
-        (click)="playCard()"
-      >
-      <ion-text>
-        Played Card
-      </ion-text>
-    </ion-button>
-    </ion-item>
-  
-    <ion-item>
-      <ion-button
-        style="flex: auto"
-        size="default"
-        color="light"
-        (click)="drawCard(true)"
-      >
-      <ion-text>
-        Drew / Played
-      </ion-text>
+      <ion-card style="flex: auto; margin-left: 0; margin-right: 0; margin-bottom: 0;" color="dark">
+        <ion-card-header>
+          <ion-card-title>
+            Play
+          </ion-card-title>
+        </ion-card-header>
 
-      </ion-button>
+        <ion-card-content>
+          <ion-button expand="block" size="default" color="light" (click)="playCard()">
+            <ion-text>
+              Played Card
+            </ion-text>
+          </ion-button>
+        </ion-card-content>
+      </ion-card>
     </ion-item>
 
     <ion-item>
-      <ion-button
-        style="flex: auto"
-        size="default"
-        color="light"
-        (click)="drawCard(false)"
-      >
-      <ion-text>
-        Drew / Didn't Play
-      </ion-text>
+      <ion-card style="flex: auto; margin-left: 0; margin-right: 0; margin-bottom: 0;" color="light">
+        <ion-card-header>
+          <ion-card-title>
+            Can't Play
+          </ion-card-title>
+        </ion-card-header>
 
-      </ion-button>
+        <ion-card-content>
+          <ion-button expand="block" size="default" color="dark" (click)="drawCard(true)">
+            <ion-text>
+              Drew &amp; Played
+            </ion-text>
+          </ion-button>
+          <br>
+          <ion-button expand="block" size="default" color="dark" (click)="drawCard(false)">
+            <ion-text>
+              Drew &amp; Didn't Play
+            </ion-text>
+
+          </ion-button>
+        </ion-card-content>
+
+      </ion-card>
     </ion-item>
+
+    <ion-item>
+      <ion-card style="flex: auto; margin-left: 0; margin-right: 0; margin-bottom: 0;" color="dark">
+        <ion-card-header>
+          <ion-card-title>
+            Mean Friends
+          </ion-card-title>
+        </ion-card-header>
+
+        <ion-card-content>
+          <ion-button expand="block" size="default" color="light" (click)="drawTwo()">
+            <ion-text>
+              Drew Two
+            </ion-text>
+          </ion-button>
+          <br>
+          <ion-button expand="block" size="default" color="light" (click)="drawFour()">
+            <ion-text>
+              Drew Four
+            </ion-text>
+          </ion-button>
+        </ion-card-content>
+      </ion-card>
+    </ion-item>
+
+    <ion-item>
+      <ion-card style="flex: auto; margin-left: 0; margin-right: 0; margin-bottom: 0;" color="light">
+        <ion-card-header>
+          <ion-card-title>
+            Forgot "Uno"
+          </ion-card-title>
+        </ion-card-header>
+
+        <ion-card-content>
+          <ion-button expand="block" size="default" color="dark" (click)="drawTwoForgotUno()">
+            <ion-text>
+              Caught &amp; Drew Two
+            </ion-text>
+          </ion-button>
     
-    <ion-item-divider>
-      Mean friends...
-    </ion-item-divider>
+        </ion-card-content>
 
-    <ion-item>
-      <ion-button
-        style="flex: auto"
-        size="default"
-        color="dark"
-        (click)="drawTwo()"
-      >
-      <ion-text>
-        Drew Two
-      </ion-text>
-      </ion-button>
+      </ion-card>
     </ion-item>
 
     <ion-item>
-      <ion-button
-        style="flex: auto"
-        size="default"
-        color="dark"
-        (click)="drawFour()"
-      >
-      <ion-text>
-        Drew Four
-      </ion-text>
-    </ion-button>
-    </ion-item>
+      <ion-card style="flex: auto; margin-left: 0; margin-right: 0; margin-bottom: 0;" color="dark">
+        <ion-card-header>
+          <ion-card-title>
+            Oops
+          </ion-card-title>
+        </ion-card-header>
 
-    <ion-item-divider>
-      Forgot to say uno...
-    </ion-item-divider>
-
-    <ion-item>
-      <ion-button
-        style="flex: auto"
-        size="default"
-        color="light"
-        (click)="drawTwoForgotUno()"
-      >
-        <ion-text>
-          Caught / Drew Two
-        </ion-text>
-      </ion-button>
-    </ion-item>
-
-    <ion-item-divider>
-      Oops...
-    </ion-item-divider>
-
-    <ion-item>
-      <ion-button
-        style="flex: auto"
-        size="default"
-        color="dark"
-        [attr.disabled]="playActions.length == 0"
-        (click)="undoLastPlayAction()"
-        >
-        <ion-text>
-          Undo
-        </ion-text>
-        &nbsp;
-        &nbsp;
-        <small>
-          <ion-text
-            color="medium"
-          >
-            {{ playActions.length > 0 ? playActions[playActions.length - 1].action : "None"}}
+        <ion-card-content>
+          <ion-button expand="block" size="default" color="light" [attr.disabled]="playActions.length == 0"
+          (click)="undoLastPlayAction()">
+          <ion-text>
+            Undo
           </ion-text>
-        </small>
-      </ion-button>
+          &nbsp;
+          &nbsp;
+          <small>
+            <ion-text color="medium">
+              {{ playActions.length > 0 ? playActions[playActions.length - 1].action : "None"}}
+            </ion-text>
+          </small>
+        </ion-button>
+          </ion-card-content>
+      </ion-card>
     </ion-item>
 
   </ion-list>
-  
+
 </ion-content>
 
 <ion-footer>
-    <ion-toolbar>
-      <ion-button
-      color="light"
-      slot="start"
-      (click)="quitGame()"
-      >
+  <ion-toolbar>
+    <ion-button color="light" slot="start" (click)="quitGame()">
       We Quit
     </ion-button>
-    <ion-button
-      color="danger"
-      slot="end"
-      (click)="loseGame()"
-    >
+    <ion-button color="danger" slot="end" (click)="loseGame()">
       I Lost
     </ion-button>
-    <ion-button
-      color="success"
-      slot="end"
-      (click)="winGame()"
-    >
+    <ion-button color="success" slot="end" (click)="winGame()">
       I Won
     </ion-button>
   </ion-toolbar>
