@@ -125,6 +125,8 @@ export class HomePage implements OnInit, ViewWillEnter {
     const now = Date.now();
     //console.log(Date.now());
 
-    return ((now - lastGame)/ (1000 * 60 * 60 * 24)).toFixed(0);
+    const daysAgo = (now - lastGame)/ (1000 * 60 * 60 * 24);
+
+    return isFinite(daysAgo) ? daysAgo.toFixed(0) : "n/a";
   }
 }
