@@ -117,4 +117,14 @@ export class HomePage implements OnInit, ViewWillEnter {
       , 0
     );
   }
+
+  get daysAgo() {
+    const lastGame = Math.max(...this.appDataSvc.gameResults.map(x => Date.parse((x as any).endDateTime)));
+    //console.log(lastGame);
+
+    const now = Date.now();
+    //console.log(Date.now());
+
+    return ((now - lastGame)/ (1000 * 60 * 60 * 24)).toFixed(0);
+  }
 }
