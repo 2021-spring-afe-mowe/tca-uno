@@ -77,4 +77,26 @@ export class SetupGamePage implements OnInit {
 
     this.router.navigate(["/play-game"]);
   }
+
+  meCheckedState = true;
+
+  uncheckingMe() {
+    if (!this.meCheckedState) {
+      console.log("uncheckingMe()");
+      this.presentUncheckingMeToast();
+      setTimeout(
+        () => this.meCheckedState = true
+        , 100
+      );
+    }
+  }
+
+  async presentUncheckingMeToast() {
+    const toast = await this.toastController.create({
+      message: "This is a 'personal' Uno journal app. In other words, 'you' are always playing! If you're not playing, no need to track the game.",
+      duration: 4000,
+      color: 'success'
+    });
+    toast.present();
+  }
 }
