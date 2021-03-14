@@ -219,11 +219,13 @@
         </ion-card-header>
 
         <ion-card-content>
-          <ion-text style="font-size: 5em;">
+          <ion-text *ngIf="daysAgo > 0" style="font-size: 5em;">
             {{ daysAgo }}
             <span style="font-size: 0.3em;">day<span *ngIf="daysAgo != 1">s</span> ago</span>
           </ion-text>
-          <br>
+          <ion-text *ngIf="daysAgo == 0" style="font-size: 3em;">
+            Today 
+          </ion-text>
         </ion-card-content>
       </ion-card>
     </ion-item>
