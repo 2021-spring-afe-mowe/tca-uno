@@ -160,8 +160,8 @@
 
         <ion-card-content>
           <ion-text style="font-size: 5em;" color="danger">
-            {{ caughtNumber }} 
-            <span style="font-size: 0.3em;">times</span>
+            {{ caughtNumber }}
+            <span style="font-size: 0.3em;">time<span *ngIf="caughtNumber != 1">s</span></span>
           </ion-text>
           <br>
         </ion-card-content>
@@ -221,7 +221,7 @@
         <ion-card-content>
           <ion-text style="font-size: 5em;">
             {{ daysAgo }}
-            <span style="font-size: 0.3em;">days ago</span>
+            <span style="font-size: 0.3em;">day<span *ngIf="daysAgo != 1">s</span> ago</span>
           </ion-text>
           <br>
         </ion-card-content>
