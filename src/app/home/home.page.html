@@ -71,7 +71,7 @@
             <ion-row *ngIf="leaderboard.length > 0">
               <ion-col>W</ion-col>
               <ion-col>L</ion-col>
-              <ion-col>%</ion-col>
+              <ion-col>AVG</ion-col>
               <ion-col></ion-col>
             </ion-row>
             <ion-row *ngFor="let person of leaderboard">
@@ -182,7 +182,7 @@
             <ion-row *ngIf="gameSizeStats.length > 0">
               <ion-col>W</ion-col>
               <ion-col>L</ion-col>
-              <ion-col>%</ion-col>
+              <ion-col>AVG</ion-col>
               <ion-col>Players</ion-col>
             </ion-row>
             <ion-row *ngFor="let stat of gameSizeStats">
