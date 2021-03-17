@@ -36,6 +36,8 @@ interface GameResult {
 
   // Under construction . . . Losely turns ? ? ?
   actions: PlayAction[];
+
+  firstCardPlayedBy: string;
 }
 @Injectable({
   providedIn: 'root'
@@ -66,6 +68,7 @@ export class AppDataService {
   confirmGameEnd(
     winLossOrQuit: string
     , playActions: PlayAction[]
+    , firstCardPlayedBy: string
     , nameOfWinner?: string
   ) {
 
@@ -79,6 +82,7 @@ export class AppDataService {
             , opponents: this.currentGameOpponents
             , actions: playActions
             , winningPlayer: "Me"
+            , firstCardPlayedBy: firstCardPlayedBy
           };
         break;
 
@@ -89,6 +93,7 @@ export class AppDataService {
           , opponents: this.currentGameOpponents
           , actions: playActions
           , winningPlayer: nameOfWinner
+          , firstCardPlayedBy: firstCardPlayedBy
         };
         break;
 
@@ -99,6 +104,7 @@ export class AppDataService {
           , opponents: this.currentGameOpponents
           , actions: playActions
           , winningPlayer: "None"
+          , firstCardPlayedBy: firstCardPlayedBy
         };
         break;
     }

@@ -135,7 +135,7 @@ export class PlayGamePage implements OnInit {
               this.playCard();
             }
 
-            this.appDataSvc.confirmGameEnd(what, this.playActions);
+            this.appDataSvc.confirmGameEnd(what, this.playActions, this.firstCardPlayedBy);
             this.router.navigate(["/"]);
         }
         }
@@ -155,7 +155,7 @@ export class PlayGamePage implements OnInit {
           ...this.appDataSvc.currentGameOpponents.map(x => ({
             text: x
             , handler: () => {
-              this.appDataSvc.confirmGameEnd("Lose", this.playActions, x);
+              this.appDataSvc.confirmGameEnd("Lose", this.playActions, this.firstCardPlayedBy, x);
               this.router.navigate(["/"]);
             }
           }))
@@ -168,6 +168,8 @@ export class PlayGamePage implements OnInit {
     await actionSheet.present();
   }  
 
+  firstCardPlayedBy = "";
+
   async presentFirstCardActionSheet() {
 
     const opponentsAndMeSorted = [...this.appDataSvc.currentGameOpponents, "Me"].sort();
@@ -178,8 +180,7 @@ export class PlayGamePage implements OnInit {
           ...opponentsAndMeSorted.map(x => ({
             text: x
             , handler: () => {
-              //this.appDataSvc.confirmGameEnd("Lose", this.playActions, x);
-              //this.router.navigate(["/"]);
+                this.firstCardPlayedBy = x;
             }
           }))
         , {
