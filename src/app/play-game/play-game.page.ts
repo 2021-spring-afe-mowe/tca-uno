@@ -19,6 +19,7 @@ export class PlayGamePage implements OnInit {
     ) { }
 
   ngOnInit() {
+    this.presentFirstCardActionSheet();
   }
 
   winGame() {
@@ -156,6 +157,29 @@ export class PlayGamePage implements OnInit {
             , handler: () => {
               this.appDataSvc.confirmGameEnd("Lose", this.playActions, x);
               this.router.navigate(["/"]);
+            }
+          }))
+        , {
+          text: 'Cancel',
+          role: 'cancel',
+        }
+      ]
+    });
+    await actionSheet.present();
+  }  
+
+  async presentFirstCardActionSheet() {
+
+    const opponentsAndMeSorted = [...this.appDataSvc.currentGameOpponents, "Me"].sort();
+
+    const actionSheet = await this.actionSheetController.create({
+      header: "Who played first card?"
+      , buttons: [
+          ...opponentsAndMeSorted.map(x => ({
+            text: x
+            , handler: () => {
+              //this.appDataSvc.confirmGameEnd("Lose", this.playActions, x);
+              //this.router.navigate(["/"]);
             }
           }))
         , {
