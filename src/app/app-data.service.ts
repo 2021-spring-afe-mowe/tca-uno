@@ -298,6 +298,17 @@ export class AppDataService {
     return finalShape;
   }
 
+  calculateFirstCardStats() {
+
+    const gameResultsWithFirstPlayerData = this.gameResults.filter(x => x.firstCardPlayedBy && x.firstCardPlayedBy.length > 0);
+    console.log("calculateFirstCardStats", gameResultsWithFirstPlayerData);
+
+    return {
+      winningPercent: 0
+      , numberOfGames: gameResultsWithFirstPlayerData.length
+    };
+  }
+
   gameResults: GameResult[] = [];
 
   public getPreviousOpponents() {

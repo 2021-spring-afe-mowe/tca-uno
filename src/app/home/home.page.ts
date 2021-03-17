@@ -30,6 +30,11 @@ export class HomePage implements OnInit, ViewWillEnter {
 
   gameSizeStats = [];
   
+  firstCardStats = {
+    winningPercent: 0
+    , numberOfGames: 0
+  };
+
   constructor(
     private appDataSvc: AppDataService
     , private actionSheetController: ActionSheetController
@@ -43,6 +48,7 @@ export class HomePage implements OnInit, ViewWillEnter {
     this.leaderboard = this.appDataSvc.calculateLeaderboard();
     this.gameTimeFacts = this.appDataSvc.calculateGameTimeFacts();
     this.gameSizeStats = this.appDataSvc.calculateGameSizeStats();
+    this.firstCardStats = this.appDataSvc.calculateFirstCardStats();
 
     this.getStarted();
   }
@@ -54,6 +60,7 @@ export class HomePage implements OnInit, ViewWillEnter {
     this.leaderboard = this.appDataSvc.calculateLeaderboard();
     this.gameTimeFacts = this.appDataSvc.calculateGameTimeFacts();
     this.gameSizeStats = this.appDataSvc.calculateGameSizeStats();
+    this.firstCardStats = this.appDataSvc.calculateFirstCardStats();
   }
 
   ionViewWillEnter() {
@@ -62,6 +69,7 @@ export class HomePage implements OnInit, ViewWillEnter {
     this.leaderboard = this.appDataSvc.calculateLeaderboard();
     this.gameTimeFacts = this.appDataSvc.calculateGameTimeFacts();
     this.gameSizeStats = this.appDataSvc.calculateGameSizeStats();
+    this.firstCardStats = this.appDataSvc.calculateFirstCardStats();
   }
 
   showOptions() {
