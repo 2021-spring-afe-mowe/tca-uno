@@ -300,11 +300,13 @@ export class AppDataService {
 
   calculateFirstCardStats() {
 
-    const gameResultsWithFirstPlayerData = this.gameResults.filter(x => x.firstCardPlayedBy && x.firstCardPlayedBy.length > 0);
+    const gameResultsWithFirstPlayerData = this.gameResults.filter(x => x.firstCardPlayedBy && x.firstCardPlayedBy.length > 0 && x.winningPlayer != "None");
     console.log("calculateFirstCardStats", gameResultsWithFirstPlayerData);
 
+    const firstPlayerWonCount = gameResultsWithFirstPlayerData.filter(x => x.firstCardPlayedBy == x.winningPlayer).length;
+
     return {
-      winningPercent: 0
+      winningPercent: firstPlayerWonCount / gameResultsWithFirstPlayerData.length
       , numberOfGames: gameResultsWithFirstPlayerData.length
     };
   }
