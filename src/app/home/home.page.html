@@ -233,7 +233,7 @@
     <ion-item>
       <ion-card style="flex: auto; margin-left: 0; margin-right: 0; margin-bottom: 0;" color="light">
         <ion-card-header>
-          <ion-card-subtitle>First Card Winning Percent</ion-card-subtitle>
+          <ion-card-subtitle>First Card Advantage?</ion-card-subtitle>
         </ion-card-header>
 
         <ion-card-content>
@@ -251,9 +251,9 @@
               {{ firstCardStats.winningPercent | percent }}
             </h1>
             <br>
-            <h2>
-              Based on {{ firstCardStats.numberOfGames }} game<span *ngIf="firstCardStats.numberOfGames != 1">s</span> with first player data
-            </h2>        
+            <h4>
+              Winning percentage of players who played the first card of a game. Based on {{ firstCardStats.numberOfGames }} game<span *ngIf="firstCardStats.numberOfGames != 1">s</span> with first card data.
+            </h4>        
           </div>
         </ion-card-content>
       </ion-card>
