@@ -28,6 +28,13 @@ export class HomePage implements OnInit, ViewWillEnter {
     , shortest: ""
   };
 
+  gameTurnFacts = {
+    mostTurns: ""
+    , fewestTurns: ""
+    , quickestWin: ""
+    , quickestLoss: ""
+  };
+   
   gameSizeStats = [];
   
   firstCardStats = {
@@ -47,6 +54,7 @@ export class HomePage implements OnInit, ViewWillEnter {
     this.handSizeFacts = this.appDataSvc.calculateHandSizeFacts();
     this.leaderboard = this.appDataSvc.calculateLeaderboard();
     this.gameTimeFacts = this.appDataSvc.calculateGameTimeFacts();
+    this.gameTurnFacts = this.appDataSvc.calculateGameTurnFacts();
     this.gameSizeStats = this.appDataSvc.calculateGameSizeStats();
     this.firstCardStats = this.appDataSvc.calculateFirstCardStats();
 
@@ -59,6 +67,7 @@ export class HomePage implements OnInit, ViewWillEnter {
     this.handSizeFacts = this.appDataSvc.calculateHandSizeFacts();
     this.leaderboard = this.appDataSvc.calculateLeaderboard();
     this.gameTimeFacts = this.appDataSvc.calculateGameTimeFacts();
+    this.gameTurnFacts = this.appDataSvc.calculateGameTurnFacts();
     this.gameSizeStats = this.appDataSvc.calculateGameSizeStats();
     this.firstCardStats = this.appDataSvc.calculateFirstCardStats();
   }
@@ -67,6 +76,7 @@ export class HomePage implements OnInit, ViewWillEnter {
     this.basicStats = this.appDataSvc.calculateBasicWinLossStats();
     this.handSizeFacts = this.appDataSvc.calculateHandSizeFacts();
     this.leaderboard = this.appDataSvc.calculateLeaderboard();
+    this.gameTurnFacts = this.appDataSvc.calculateGameTurnFacts();
     this.gameTimeFacts = this.appDataSvc.calculateGameTimeFacts();
     this.gameSizeStats = this.appDataSvc.calculateGameSizeStats();
     this.firstCardStats = this.appDataSvc.calculateFirstCardStats();

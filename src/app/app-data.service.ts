@@ -265,6 +265,26 @@ export class AppDataService {
     };
   }
 
+  calculateGameTurnFacts() {
+
+    const gamesWithTurnCounts = this.gameResults.map(x => x.actions.length);
+    const gameWinsTurnCounts = this.gameResults
+      .filter(x => x.winningPlayer == "Me")
+      .map(x => x.actions.length)
+    ;
+    const gameLossesTurnCounts = this.gameResults
+      .filter(x => x.winningPlayer != "Me" && x.winningPlayer != "None")
+      .map(x => x.actions.length)
+    ;
+
+    return {
+      mostTurns: gamesWithTurnCounts.length > 0 ? Math.max(...gamesWithTurnCounts).toString() : "n/a"
+      , fewestTurns: gamesWithTurnCounts.length > 0 ? Math.min(...gamesWithTurnCounts).toString() : "n/a"
+      , quickestWin: gameWinsTurnCounts.length > 0 ? Math.min(...gameWinsTurnCounts).toString() : "n/a"
+      , quickestLoss: gameLossesTurnCounts.length > 0 ? Math.min(...gameLossesTurnCounts).toString() : "n/a"
+    };
+  }
+
   calculateGameSizeStats() {
 
     const gameResultsGroupedByNumberOfPlayers = this.gameResults

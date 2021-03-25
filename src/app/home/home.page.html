@@ -259,5 +259,50 @@
       </ion-card>
     </ion-item>
 
+    <ion-item>
+      <ion-card style="flex: auto; margin-left: 0; margin-right: 0; margin-bottom: 0;" color="dark">
+        <ion-card-header>
+          <ion-card-subtitle>Game Turn Facts</ion-card-subtitle>
+        </ion-card-header>
+
+        <ion-card-content>
+          <ion-text style="font-size: 1.75em;" color="light">
+            {{ gameTurnFacts.mostTurns }} turns
+          </ion-text>
+          <br>
+          <small>
+            Most
+          </small>
+          <br>
+          <br>
+          <ion-text style="font-size: 1.75em;" color="light">
+            {{ gameTurnFacts.fewestTurns }} turns
+          </ion-text>
+          <br>
+          <small>
+            Fewest
+          </small>
+          <br>
+          <br>
+          <ion-text style="font-size: 1.75em;" color="success">
+            {{ gameTurnFacts.quickestWin }} turns
+          </ion-text>
+          <br>
+          <small>
+            Quickest Win
+          </small>
+          <br>
+          <br>
+          <ion-text style="font-size: 1.75em;" color="danger">
+            {{ gameTurnFacts.quickestLoss }} turns
+          </ion-text>
+          <br>
+          <small>
+            Quickest Loss
+          </small>          
+        </ion-card-content>
+      </ion-card>
+    </ion-item>
+    
   </ion-list>
 </ion-content>
