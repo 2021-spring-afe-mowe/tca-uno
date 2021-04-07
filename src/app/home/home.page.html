@@ -21,15 +21,27 @@
 
   <ion-list lines="none">
 
-    <ion-item>
-      <ion-button size="large" style="flex: auto; margin-top: 20px; margin-bottom: 20px;" color="success"
-        [routerLink]="['/setup-game']">
-        Play Uno
-      </ion-button>
-    </ion-item>
+    <ion-card>
+      <img src="../../assets/home-page-hero-image.jpg" />
+      <ion-footer>
+        <ion-toolbar>
+          <ion-buttons
+            slot="end"
+          >
+            <ion-button
+              fill="solid" 
+              size="large" 
+              color="success"
+              [routerLink]="['/setup-game']">
+              Play Uno
+            </ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-footer>
+    </ion-card>
 
     <ion-item-divider>
-      Browse your stats...
+      Browse your stats & facts...
     </ion-item-divider>
 
     <ion-item>
