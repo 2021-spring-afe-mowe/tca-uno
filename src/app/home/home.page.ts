@@ -147,4 +147,9 @@ export class HomePage implements OnInit, ViewWillEnter {
 
     return isFinite(daysAgo) ? daysAgo.toFixed(0) : "n/a";
   }
+
+  get lastOpponents() {
+    const lastGame = this.appDataSvc.gameResults[this.appDataSvc.gameResults.length - 1];
+    return lastGame ? lastGame.opponents.join(", ") : "";
+  }
 }
