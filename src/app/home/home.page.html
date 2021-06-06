@@ -33,7 +33,7 @@
     </ion-item>
     
     <ion-item-divider>
-      Browse your stats & facts...
+      Stats & fun facts...
     </ion-item-divider>
 
     <ion-item>
@@ -308,5 +308,31 @@
       </ion-card>
     </ion-item>
     
+    <br>
+    <ion-item-divider>
+      Games, newest to oldest...
+    </ion-item-divider>
+
+    <ion-item
+      *ngFor="let g of reverseChron; let i = index"
+    >
+      <ion-card style="flex: auto; margin-left: 0; margin-right: 0; margin-bottom: 0;" [attr.color]="i % 2 == 0 ? 'light' : 'dark'">
+        <ion-card-header>
+          <ion-card-subtitle>{{ g.endDateTime | date }}</ion-card-subtitle>
+        </ion-card-header>
+
+        <ion-card-content>
+          <p>
+            Opponents: {{ g.opponents.join(", ") }}
+          </p>
+          <br>
+          <p>
+            Winner: {{ g.winningPlayer }}
+          </p>
+
+        </ion-card-content>
+      </ion-card>
+    </ion-item>
+
   </ion-list>
 </ion-content>

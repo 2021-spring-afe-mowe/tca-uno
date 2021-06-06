@@ -70,6 +70,8 @@ export class HomePage implements OnInit, ViewWillEnter {
     this.gameTurnFacts = this.appDataSvc.calculateGameTurnFacts();
     this.gameSizeStats = this.appDataSvc.calculateGameSizeStats();
     this.firstCardStats = this.appDataSvc.calculateFirstCardStats();
+
+    this.reverseChron = this.appDataSvc.getResultsInReverseChron();
   }
 
   ionViewWillEnter() {
@@ -80,7 +82,11 @@ export class HomePage implements OnInit, ViewWillEnter {
     this.gameTimeFacts = this.appDataSvc.calculateGameTimeFacts();
     this.gameSizeStats = this.appDataSvc.calculateGameSizeStats();
     this.firstCardStats = this.appDataSvc.calculateFirstCardStats();
+  
+    this.reverseChron = this.appDataSvc.getResultsInReverseChron();
   }
+
+  reverseChron = [];
 
   showOptions() {
     this.presentOptoinsActionSheet();

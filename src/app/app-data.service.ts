@@ -57,6 +57,10 @@ export class AppDataService {
     //console.log("loadPreviousGameResults()", this.gameResults);
   }
 
+  getResultsInReverseChron() {
+    return [...this.gameResults.reverse()];
+  }
+
   //
   // Some service properties used to store "current," "in progress," game data.
   //
