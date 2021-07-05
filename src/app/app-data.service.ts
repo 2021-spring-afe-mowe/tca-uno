@@ -58,7 +58,7 @@ export class AppDataService {
   }
 
   getResultsInReverseChron() {
-    return [...(this.gameResults.reverse())];
+    return [...(this.gameResults.sort((a, b) => a.endDateTime >= b.endDateTime ? -1 : 1))];
   }
 
   //
