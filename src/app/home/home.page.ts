@@ -155,7 +155,7 @@ export class HomePage implements OnInit, ViewWillEnter {
   }
 
   get lastOpponents() {
-    const lastGame = this.appDataSvc.gameResults[this.appDataSvc.gameResults.length - 1];
+    const lastGame = this.appDataSvc.getResultsInReverseChron()[0];
     return lastGame ? lastGame.opponents.join(", ") : "";
   }
 }
