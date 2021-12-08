@@ -37,10 +37,10 @@ export class HomePage implements OnInit, ViewWillEnter {
    
   gameSizeStats = [];
   
-  firstCardStats = {
-    winningPercent: 0
-    , numberOfGames: 0
-  };
+  // firstCardStats = {
+  //   winningPercent: 0
+  //   , numberOfGames: 0
+  // };
 
   constructor(
     private appDataSvc: AppDataService
@@ -56,7 +56,7 @@ export class HomePage implements OnInit, ViewWillEnter {
     this.gameTimeFacts = this.appDataSvc.calculateGameTimeFacts();
     this.gameTurnFacts = this.appDataSvc.calculateGameTurnFacts();
     this.gameSizeStats = this.appDataSvc.calculateGameSizeStats();
-    this.firstCardStats = this.appDataSvc.calculateFirstCardStats();
+    // this.firstCardStats = this.appDataSvc.calculateFirstCardStats();
 
     this.getStarted();
   }
@@ -69,7 +69,7 @@ export class HomePage implements OnInit, ViewWillEnter {
     this.gameTimeFacts = this.appDataSvc.calculateGameTimeFacts();
     this.gameTurnFacts = this.appDataSvc.calculateGameTurnFacts();
     this.gameSizeStats = this.appDataSvc.calculateGameSizeStats();
-    this.firstCardStats = this.appDataSvc.calculateFirstCardStats();
+    // this.firstCardStats = this.appDataSvc.calculateFirstCardStats();
 
     this.reverseChron = this.appDataSvc.getResultsInReverseChron();
   }
@@ -81,7 +81,7 @@ export class HomePage implements OnInit, ViewWillEnter {
     this.gameTurnFacts = this.appDataSvc.calculateGameTurnFacts();
     this.gameTimeFacts = this.appDataSvc.calculateGameTimeFacts();
     this.gameSizeStats = this.appDataSvc.calculateGameSizeStats();
-    this.firstCardStats = this.appDataSvc.calculateFirstCardStats();
+    // this.firstCardStats = this.appDataSvc.calculateFirstCardStats();
   
     this.reverseChron = this.appDataSvc.getResultsInReverseChron();
   }

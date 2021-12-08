@@ -19,7 +19,7 @@ export class PlayGamePage implements OnInit {
     ) { }
 
   ngOnInit() {
-    this.presentFirstCardActionSheet();
+    // this.presentFirstCardActionSheet();
   }
 
   winGame() {
