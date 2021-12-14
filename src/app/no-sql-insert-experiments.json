@@ -1,0 +1,20 @@
+{
+    "startDateTime": {
+        "S": "Tue Dec 14 2021 12:11:50 GMT-0600 (Central Standard Time)"
+    },
+    "endDateTime": {
+        "S": "Tue Dec 14 2021 12:12:06 GMT-0600 (Central Standard Time)"
+    },
+    "opponents": {
+        "S": "Jack"
+    },
+    "actions": {
+        "L": []
+    },
+    "winningPlayer": {
+        "S": "Me"
+    },
+    "firstCardPlayedBy": {
+        "S": ""
+    }
+}
