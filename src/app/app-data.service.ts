@@ -114,6 +114,8 @@ export class AppDataService {
         break;
     }
 
+    // https://32wop75hhc.execute-api.us-east-1.amazonaws.com/prod/data/?user=tsteele@madisoncollege.edu&game=tca-uno
+    
     const datesAsStringsGameResults = [newGameResult].map(x => ({
       ...x
       , startDateTime: x.startDateTime.toISOString()
