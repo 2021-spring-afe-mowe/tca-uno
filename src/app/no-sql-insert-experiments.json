@@ -1,3 +1,21 @@
+// This worked via API Gateway ! ! !
+
+{
+    "TableName": "tca-data",
+    "Item": {
+        "pk": {
+            "S": "tsteele@madisoncollege.edu"
+        },
+        "sk": {
+            "S": "tca-uno#2021-12-16T23:43:41.360Z"
+        }
+    }
+}
+
+
+
+
+// Old stuff from NoSQL Workbench... Actual gameresult, not a table item...
 {
     "startDateTime": {
         "S": "Tue Dec 14 2021 12:11:50 GMT-0600 (Central Standard Time)"
