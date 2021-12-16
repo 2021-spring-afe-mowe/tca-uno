@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
+import { marshall } from '@aws-sdk/util-dynamodb';
 
 export interface BasicStatsDisplay {
   numberOfGames: number;
@@ -112,6 +113,14 @@ export class AppDataService {
         };
         break;
     }
+
+    console.log("newGameResult", marshall(
+      newGameResult
+      , {
+        removeUndefinedValues: true
+        , convertClassInstanceToMap: true
+      }
+    ));
 
     this.gameResults = [
       ...this.gameResults
