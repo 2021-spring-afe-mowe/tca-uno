@@ -72,9 +72,15 @@ function createPutItemInput() {
             "S": "Me"
           },
           "firstCardPlayedBy": {
-            "S": ""
+            "S": "_"
           }
         }
+      },
+      "gsi1pk": {
+        "S": "tca-uno"
+      },
+      "gsi1sk": {
+        "S": "2021-12-14:13:11:50"
       }
     }
   }

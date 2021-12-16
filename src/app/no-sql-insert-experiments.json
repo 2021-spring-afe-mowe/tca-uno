@@ -15,6 +15,6 @@
         "S": "Me"
     },
     "firstCardPlayedBy": {
-        "S": ""
+        "S": "_"
     }
 }
