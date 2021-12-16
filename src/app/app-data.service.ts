@@ -114,13 +114,25 @@ export class AppDataService {
         break;
     }
 
-    console.log("newGameResult", marshall(
-      newGameResult
+    const datesAsStringsGameResults = [newGameResult].map(x => ({
+      ...x
+      , startDateTime: x.startDateTime.toISOString()
+      , endDateTime: x.endDateTime.toISOString()
+      , actions: x.actions.map(y => ({
+        ...y
+        , actionDateTime: y.actionDateTime.toISOString()
+      }))
+    }));
+
+    const marshalledGameResult = marshall(
+      datesAsStringsGameResults[0]
       , {
         removeUndefinedValues: true
         , convertClassInstanceToMap: true
       }
-    ));
+    );
+
+    console.log("marshalledGameResult", marshalledGameResult);
 
     this.gameResults = [
       ...this.gameResults
