@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
 import { marshall } from '@aws-sdk/util-dynamodb';
+import { HttpClient } from '@angular/common/http';
 
 export interface BasicStatsDisplay {
   numberOfGames: number;
@@ -45,7 +46,10 @@ interface GameResult {
 })
 export class AppDataService {
 
-  constructor(private storage: Storage) { 
+  constructor(
+    private storage: Storage
+    , private httpSvc: HttpClient
+  ) { 
     //this.loadPreviousGameResults();
   }
 
@@ -382,4 +386,23 @@ export class AppDataService {
   clearData() {
     this.storage.set("tcaUnoGameResults", JSON.stringify([]));
   }
+
+  saveGame = () => {
+    this.httpSvc.post(
+      "https://32wop75hhc.execute-api.us-east-1.amazonaws.com/prod/data"
+      , `
+        {
+          "TableName": "tca-data",
+          "Item": {
+              "pk": {
+                  "S": "tsteele@madisoncollege.edu"
+              },
+              "sk": {
+                  "S": "tca-uno#2021-12-16T23:43:41.360Z"
+              }
+          }
+      }      
+      `
+    ).subscribe();
+  };
 }
