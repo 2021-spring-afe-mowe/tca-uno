@@ -67,7 +67,7 @@ export class SetupGamePage implements OnInit {
       return;
     }
 
-    this.appDataSvc.currentGameStartDateTime = new Date();
+    this.appDataSvc.currentGameStartDateTime = new Date().toISOString();
 
     this.appDataSvc.currentGameOpponents = [
       ...this.availablePlayers

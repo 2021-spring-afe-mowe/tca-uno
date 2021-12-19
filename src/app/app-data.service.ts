@@ -18,15 +18,15 @@ export interface AvailablePlayerDisplay {
 }
 
 export interface PlayAction {
-  actionDateTime: Date;
+  actionDateTime: string;
   action: string;
   cardDelta: number;
 }
 
 interface GameResult {
   
-  startDateTime: Date;
-  endDateTime: Date;
+  startDateTime: string;
+  endDateTime: string;
 
   // "Me" means I won ! ! ! "None" will mean quit, i-o-g ? ? ?
   winningPlayer: string;
@@ -59,7 +59,23 @@ export class AppDataService {
     
     //console.log("loadPreviousGameResults()", data);
     this.gameResults = data ? JSON.parse(data) : [];
-    //console.log("loadPreviousGameResults()", this.gameResults);
+    console.log("loadPreviousGameResults()", this.gameResults);
+
+    // One time ! ! !
+    // const isoData = this.gameResults.map(x => ({
+    //   ...x
+    //   , startDateTime: new Date(x.startDateTime).toISOString()
+    //   , endDateTime: new Date(x.endDateTime).toISOString()
+    //   , actions: x.actions.map(y => ({
+    //     ...y
+    //     , actionDateTime: new Date(y.actionDateTime).toISOString()
+    //   }))
+    // }));
+
+    // console.log(isoData);
+
+    // this.storage.set("tcaUnoGameResults", JSON.stringify(isoData));
+
   }
 
   getResultsInReverseChron() {
@@ -71,7 +87,7 @@ export class AppDataService {
   //
   // This is a convenient way to share data between screens.
   //
-  currentGameStartDateTime: Date;
+  currentGameStartDateTime: string;
   currentGameOpponents: string[];
 
   confirmGameEnd(
@@ -87,7 +103,7 @@ export class AppDataService {
       case "Win":
           newGameResult = {
             startDateTime: this.currentGameStartDateTime
-            , endDateTime: new Date()
+            , endDateTime: new Date().toISOString()
             , opponents: this.currentGameOpponents
             , actions: playActions
             , winningPlayer: "Me"
@@ -98,7 +114,7 @@ export class AppDataService {
       case "Lose":
         newGameResult = {
           startDateTime: this.currentGameStartDateTime
-          , endDateTime: new Date()
+          , endDateTime: new Date().toISOString()
           , opponents: this.currentGameOpponents
           , actions: playActions
           , winningPlayer: nameOfWinner
@@ -109,7 +125,7 @@ export class AppDataService {
       case "Quit":
         newGameResult = {
           startDateTime: this.currentGameStartDateTime
-          , endDateTime: new Date()
+          , endDateTime: new Date().toISOString()
           , opponents: this.currentGameOpponents
           , actions: playActions
           , winningPlayer: "None"
@@ -120,18 +136,8 @@ export class AppDataService {
 
     // https://32wop75hhc.execute-api.us-east-1.amazonaws.com/prod/data/?user=tsteele@madisoncollege.edu&game=tca-uno
     
-    const datesAsStringsGameResults = [newGameResult].map(x => ({
-      ...x
-      , startDateTime: x.startDateTime.toISOString()
-      , endDateTime: x.endDateTime.toISOString()
-      , actions: x.actions.map(y => ({
-        ...y
-        , actionDateTime: y.actionDateTime.toISOString()
-      }))
-    }));
-
     const marshalledGameResult = marshall(
-      datesAsStringsGameResults[0]
+      newGameResult
       , {
         removeUndefinedValues: true
         , convertClassInstanceToMap: true

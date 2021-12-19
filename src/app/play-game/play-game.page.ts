@@ -59,7 +59,7 @@ export class PlayGamePage implements OnInit {
     this.playActions = [
       ...this.playActions
       , {
-        actionDateTime: new Date()
+        actionDateTime: new Date().toISOString()
         , action: "Play Card"
         , cardDelta: -1
       }
@@ -70,7 +70,7 @@ export class PlayGamePage implements OnInit {
     this.playActions = [
       ...this.playActions
       , {
-        actionDateTime: new Date()
+        actionDateTime: new Date().toISOString()
         , action: "Draw Two"
         , cardDelta: 2
       }
@@ -81,7 +81,7 @@ export class PlayGamePage implements OnInit {
     this.playActions = [
       ...this.playActions
       , {
-        actionDateTime: new Date()
+        actionDateTime: new Date().toISOString()
         , action: "Draw Four"
         , cardDelta: 4
       }
@@ -92,7 +92,7 @@ export class PlayGamePage implements OnInit {
     this.playActions = [
       ...this.playActions
       , {
-        actionDateTime: new Date()
+        actionDateTime: new Date().toISOString()
         , action: "Caught Draw Two"
         , cardDelta: 2
       }
@@ -103,7 +103,7 @@ export class PlayGamePage implements OnInit {
     this.playActions = [
       ...this.playActions
       , {
-        actionDateTime: new Date()
+        actionDateTime: new Date().toISOString()
         , action: "Draw Card"
         , cardDelta: played ? 0 : 1 
       }
