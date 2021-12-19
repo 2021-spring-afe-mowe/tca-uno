@@ -117,12 +117,6 @@ export class HomePage implements OnInit, ViewWillEnter {
           }
         }
         , {
-          text: "DynamoDB PutItem Test"
-          , handler: () => {
-            this.appDataSvc.saveGame();
-          }
-        }
-        , {
           text: 'Cancel',
           role: 'cancel',
         }

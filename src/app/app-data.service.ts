@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
 import { marshall } from '@aws-sdk/util-dynamodb';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { maxHeaderSize } from 'http';
 
 export interface BasicStatsDisplay {
   numberOfGames: number;
@@ -21,6 +22,20 @@ export interface PlayAction {
   actionDateTime: string;
   action: string;
   cardDelta: number;
+}
+
+interface DynamoDbShape {
+  pk: string;
+  sk: string;
+  
+  ts: string;
+  app: string;
+  user: string;
+
+  game: GameResult;
+
+  gsi1sk: string;
+  gsi1pk: string;
 }
 
 interface GameResult {
@@ -136,21 +151,13 @@ export class AppDataService {
 
     // https://32wop75hhc.execute-api.us-east-1.amazonaws.com/prod/data/?user=tsteele@madisoncollege.edu&game=tca-uno
     
-    const marshalledGameResult = marshall(
-      newGameResult
-      , {
-        removeUndefinedValues: true
-        , convertClassInstanceToMap: true
-      }
-    );
-
-    console.log("marshalledGameResult", marshalledGameResult);
-
     this.gameResults = [
       ...this.gameResults
       , newGameResult
     ];
 
+    this.saveGame(newGameResult);
+    
     this.storage.set("tcaUnoGameResults", JSON.stringify(this.gameResults));
     console.log("confirmGameEnd()", this.gameResults);
   }
@@ -393,22 +400,42 @@ export class AppDataService {
     this.storage.set("tcaUnoGameResults", JSON.stringify([]));
   }
 
-  saveGame = () => {
+  saveGame = (g: GameResult) => {
+    const dynamoGame: any = {
+      pk: 'tsteele@madisoncollege.edu'
+      , sk: `tca-uno#${g.endDateTime}`
+
+      , ts: g.endDateTime
+      , user: 'tsteele@madisoncollege.edu'
+      , app: 'tca-uno'
+
+      , gsi1pk: 'tca-uno'
+      , gsi1sk: g.endDateTime
+
+      , game: g
+    };
+
+    const marshalledGame=marshall(
+      dynamoGame
+      , {
+        removeUndefinedValues: true
+        , convertClassInstanceToMap: true
+      }
+    );
+
+    console.log(marshalledGame);
+
     this.httpSvc.post(
       "https://32wop75hhc.execute-api.us-east-1.amazonaws.com/prod/data"
-      , `
-        {
-          "TableName": "tca-data",
-          "Item": {
-              "pk": {
-                  "S": "tsteele@madisoncollege.edu"
-              },
-              "sk": {
-                  "S": "tca-uno#2021-12-16T23:43:41.360Z"
-              }
-          }
-      }      
-      `
+      , {
+        "TableName": "tca-data",
+        "Item": marshalledGame
+      }
+      // , {
+      //   headers: new HttpHeaders({
+      //     'Access-Control-Allow-Origin': '*'          
+      //   })
+      // }
     ).subscribe();
   };
 }
