@@ -12,16 +12,29 @@
       <ion-card style="flex: auto; margin-left: 0; margin-right: 0; margin-bottom: 0;" color="light">
         <ion-card-header>
           <ion-card-subtitle>
-            Play
+            Played Card
           </ion-card-subtitle>
         </ion-card-header>
 
         <ion-card-content>
-          <ion-button expand="block" size="default" color="dark" (click)="playCard()">
-            <ion-text>
-              Played Card
-            </ion-text>
-          </ion-button>
+          <ion-grid>
+            <ion-row class="ion-justify-content-between">
+              <ion-col>
+                <ion-button expand="block" size="default" color="dark" (click)="playCard()">
+                  <ion-text>
+                    Played Card
+                  </ion-text>
+                </ion-button>
+              </ion-col>
+              <ion-col>
+                <ion-button expand="block" size="default" color="dark" (click)="drawCard(true)">
+                  <ion-text>
+                    Drew &amp; Played
+                  </ion-text>
+                </ion-button>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
         </ion-card-content>
       </ion-card>
     </ion-item>
@@ -30,7 +43,7 @@
       <ion-card style="flex: auto; margin-left: 0; margin-right: 0; margin-bottom: 0;" color="light">
         <ion-card-header>
           <ion-card-subtitle>
-            Can't Play
+            Drew Card(s)
           </ion-card-subtitle>
         </ion-card-header>
 
@@ -47,26 +60,11 @@
               <ion-col>
                 <ion-button expand="block" size="default" color="dark" (click)="drawCard(false)">
                   <ion-text>
-                    Drew &amp; Didn't Play
+                    Drew &amp; No Play
                   </ion-text>
                 </ion-button>
               </ion-col>
             </ion-row>
-          </ion-grid>
-        </ion-card-content>
-      </ion-card>
-    </ion-item>
-
-    <ion-item>
-      <ion-card style="flex: auto; margin-left: 0; margin-right: 0; margin-bottom: 0;" color="light">
-        <ion-card-header>
-          <ion-card-subtitle>
-            Mean Friends
-          </ion-card-subtitle>
-        </ion-card-header>
-
-        <ion-card-content>
-          <ion-grid>
             <ion-row class="ion-justify-content-between">
               <ion-col>
                 <ion-button expand="block" size="default" color="dark" (click)="drawTwo()">
@@ -92,7 +90,9 @@
       <ion-card style="flex: auto; margin-left: 0; margin-right: 0; margin-bottom: 0;" color="light">
         <ion-card-header>
           <ion-card-subtitle>
-            Forgot "Uno"
+            <ion-text color="danger">
+              Forgot "Uno"
+            </ion-text>
           </ion-card-subtitle>
         </ion-card-header>
 
