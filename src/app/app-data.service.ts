@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
-import { marshall } from '@aws-sdk/util-dynamodb';
+import { marshall, unmarshall } from '@aws-sdk/util-dynamodb';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { maxHeaderSize } from 'http';
 
@@ -69,11 +69,23 @@ export class AppDataService {
   }
 
   async loadPreviousGameResults() {
+
     await this.storage.ready();
     const data = await this.storage.get("tcaUnoGameResults");
     
+    const dynamodbData = await this.loadGames();
+    
+    console.log(dynamodbData);
+    // Get to the 'game' of each result and unmarshall it ! ! !
+    const unmarshalledGameResults = (dynamodbData as any).Items.map(x => unmarshall(x));
+    //console.log(unmarshalledGameResults);
+    this.gameResults = unmarshalledGameResults.map(x => x.game); 
+    //const unmarshalledGameResults = unmarshall(marshalledGameResults, {convertEmptyValues: true});
+    //console.log(unmarshalledGameResults);
+
+
     //console.log("loadPreviousGameResults()", data);
-    this.gameResults = data ? JSON.parse(data) : [];
+    //this.gameResults = data ? JSON.parse(data) : [];
     console.log("loadPreviousGameResults()", this.gameResults);
 
     // One time ! ! !
@@ -441,5 +453,9 @@ export class AppDataService {
       //   })
       // }
     ).subscribe();
+  };
+
+  loadGames = () => {
+    return this.httpSvc.get("https://32wop75hhc.execute-api.us-east-1.amazonaws.com/prod/data/?user=tsteele@madisoncollege.edu&game=tca-uno").toPromise();    
   };
 }
