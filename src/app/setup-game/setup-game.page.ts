@@ -93,9 +93,9 @@ export class SetupGamePage implements OnInit {
 
   async presentUncheckingMeToast() {
     const toast = await this.toastController.create({
-      message: "This is a 'personal' Uno journal app. In other words, 'you' are always playing! If you're not playing, no need to track the game.",
+      message: "You are always playing ! ! !",
       duration: 4000,
-      color: 'success'
+      color: 'warning'
     });
     toast.present();
   }
