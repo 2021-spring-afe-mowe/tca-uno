@@ -91,6 +91,10 @@ export class AppDataService {
 
     // this.storage.set("tcaUnoGameResults", JSON.stringify(isoData));
 
+
+    // The big once ! ! !
+    // this.gameResults.forEach(x => this.saveGame(x));
+
   }
 
   getResultsInReverseChron() {
