@@ -35,28 +35,32 @@
 </ion-content>
 
 <ion-footer>
-  <ion-toolbar>
-    <ion-input
-      placeholder="Enter new player name"
-      [(ngModel)]="newPlayerName"
-    >
-
-    </ion-input>
-    <ion-button
-      size="medium"
-      slot="end"
-      color="medium"
-      (click)="addNewPlayer()"
-    >
-      Add
-    </ion-button>
-    <ion-button
-      size="medium"
-      slot="end"
-      color="success"
-      (click)="startGame()"
+  <ion-grid>
+    <ion-row>
+      <ion-input
+        placeholder="Enter new player name"
+        [(ngModel)]="newPlayerName"
       >
-      Start
-    </ion-button>
-  </ion-toolbar>
+      </ion-input>
+      <ion-button
+        size="small"
+        color="medium"
+        (click)="addNewPlayer()"
+      >
+        Add New Player
+      </ion-button>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-button
+          size="large"
+          color="success"
+          (click)="startGame()"
+          expand="block"
+          >
+          Start Game
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-footer>
