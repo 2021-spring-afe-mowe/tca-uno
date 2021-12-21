@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      <ion-chip>{{ cardCount }}</ion-chip> card<span *ngIf="cardCount != 1">s</span>
+      <ion-chip color="dark" outline>{{ cardCount }}</ion-chip>&nbsp;&nbsp;card<span *ngIf="cardCount != 1">s</span> in hand
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -16,8 +16,8 @@
           </ion-card-subtitle>
         </ion-card-header>
 
-        <ion-card-content>
-          <ion-grid>
+        <ion-card-content class="ion-padding-horizontal">
+          <ion-grid class="ion-no-padding">
             <ion-row class="ion-justify-content-between">
               <ion-col>
                 <ion-button expand="block" size="default" color="dark" (click)="playCard()">
@@ -47,8 +47,8 @@
           </ion-card-subtitle>
         </ion-card-header>
 
-        <ion-card-content>
-          <ion-grid>
+        <ion-card-content class="ion-padding-horizontal">
+          <ion-grid class="ion-no-padding">
             <ion-row class="ion-justify-content-between">
               <ion-col>
                 <ion-button expand="block" size="default" color="dark" (click)="drawCard(true)">
@@ -60,7 +60,7 @@
               <ion-col>
                 <ion-button expand="block" size="default" color="dark" (click)="drawCard(false)">
                   <ion-text>
-                    Drew &amp; No Play
+                    Drew &amp; Didn't Play
                   </ion-text>
                 </ion-button>
               </ion-col>
