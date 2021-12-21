@@ -61,7 +61,10 @@ export class HomePage implements OnInit, ViewWillEnter {
     this.getStarted();
   }
 
+  loading = true;
+
   async getStarted() {
+    this.loading = true;
     await this.appDataSvc.loadPreviousGameResults();
     this.basicStats = this.appDataSvc.calculateBasicWinLossStats();
     this.handSizeFacts = this.appDataSvc.calculateHandSizeFacts();
@@ -72,6 +75,7 @@ export class HomePage implements OnInit, ViewWillEnter {
     // this.firstCardStats = this.appDataSvc.calculateFirstCardStats();
 
     this.reverseChron = this.appDataSvc.getResultsInReverseChron();
+    this.loading = false;
   }
 
   ionViewWillEnter() {

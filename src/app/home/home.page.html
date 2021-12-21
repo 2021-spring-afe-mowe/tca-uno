@@ -18,8 +18,21 @@
     </ion-toolbar>
   </ion-header>
 
+  <div 
+    class="ion-text-center ion-margin-vertical"
+    *ngIf="loading"
+  >
+    <ion-spinner 
+      name="crescent"
+    >
+    </ion-spinner>
+  </div>
 
-  <ion-list lines="none">
+
+  <ion-list 
+    lines="none"
+    *ngIf="!loading"
+  >
 
     <!-- <ion-card>
       <img src="assets/home-page-hero-image.jpg" />
