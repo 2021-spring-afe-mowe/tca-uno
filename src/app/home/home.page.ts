@@ -162,4 +162,17 @@ export class HomePage implements OnInit, ViewWillEnter {
     const lastGame = this.appDataSvc.getResultsInReverseChron()[0];
     return lastGame ? lastGame.opponents.join(", ") : "";
   }
+
+  email = "";
+  nickname = "";
+  readyToSave = false;
+
+  async saveEmailAndNickname() {
+    if (this.email.length > 0 && this.nickname.length > 0) {
+      console.log("Saving email and nickname...");
+      await this.appDataSvc.saveEmailAndNickname(this.email, this.nickname);
+      this.readyToSave = true;
+      this.getStarted();
+    }  
+  }
 }

@@ -18,6 +18,40 @@
     </ion-toolbar>
   </ion-header>
 
+  <ion-card
+    *ngIf="!loading && !readyToSave"
+  >
+    <ion-card-header>
+      <ion-card-subtitle>
+        Use email and nickname to store your data...
+      </ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-label>
+        Email
+      </ion-label>
+      <ion-input
+        placeholder="Enter your email address"
+        [(ngModel)]="email"
+      >
+      </ion-input>
+      <ion-label>
+        Display Name
+      </ion-label>
+      <ion-input
+        placeholder="Enter a display name"
+        [(ngModel)]="nickname"
+      >
+      </ion-input>
+      <ion-button
+        size="small"
+        color="medium"
+        (click)="saveEmailAndNickname()"
+      >
+        Save
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
   <div 
     class="ion-text-center ion-margin-vertical"
     *ngIf="loading"
@@ -31,7 +65,7 @@
 
   <ion-list 
     lines="none"
-    *ngIf="!loading"
+    *ngIf="!loading && readyToSave"
   >
 
     <!-- <ion-card>

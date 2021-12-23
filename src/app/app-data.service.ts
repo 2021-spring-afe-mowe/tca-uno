@@ -71,9 +71,9 @@ export class AppDataService {
   async loadPreviousGameResults() {
 
     await this.storage.ready();
-    const data = await this.storage.get("tcaUnoGameResults");
-    
-    const dynamodbData = await this.loadGames();
+    const emailAndNickname = await this.storage.get("tcaUnoEmailAndNickname");
+    console.log(emailAndNickname);
+    const dynamodbData = await this.loadGames(JSON.parse(emailAndNickname));
     
     console.log(dynamodbData);
     // Get to the 'game' of each result and unmarshall it ! ! !
@@ -174,13 +174,13 @@ export class AppDataService {
 
     this.saveGame(newGameResult);
     
-    this.storage.set("tcaUnoGameResults", JSON.stringify(this.gameResults));
+    // this.storage.set("tcaUnoGameResults", JSON.stringify(this.gameResults));
     console.log("confirmGameEnd()", this.gameResults);
   }
 
   updateWithPastedGameResults(results) {
     this.gameResults = results;
-    this.storage.set("tcaUnoGameResults", JSON.stringify(this.gameResults));
+    //this.storage.set("tcaUnoGameResults", JSON.stringify(this.gameResults));
   }
 
   calculateBasicWinLossStats(): BasicStatsDisplay {
@@ -413,7 +413,7 @@ export class AppDataService {
   ;
 
   clearData() {
-    this.storage.set("tcaUnoGameResults", JSON.stringify([]));
+    // this.storage.set("tcaUnoGameResults", JSON.stringify([]));
   }
 
   saveGame = (g: GameResult) => {
@@ -455,7 +455,27 @@ export class AppDataService {
     ).subscribe();
   };
 
-  loadGames = () => {
-    return this.httpSvc.get("https://32wop75hhc.execute-api.us-east-1.amazonaws.com/prod/data/?user=tsteele@madisoncollege.edu&game=tca-uno").toPromise();    
+  loadGames = (emailAndNickname) => {
+    console.log(emailAndNickname);
+    const url = `https://32wop75hhc.execute-api.us-east-1.amazonaws.com/prod/data/?user=${emailAndNickname?.email}&game=tca-uno`;
+    console.log(url);
+    return this.httpSvc.get(url).toPromise();    
+  };
+
+  saveEmailAndNickname = async (
+    email
+    , nickname
+  ) => {
+    await this.storage.ready();
+    console.log({email, nickname});
+    this.storage.set(
+      "tcaUnoEmailAndNickname"
+      , JSON.stringify(
+          {
+            email: email 
+            , nickname: nickname
+          }
+      )
+    );
   };
 }
