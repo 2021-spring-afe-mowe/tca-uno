@@ -478,4 +478,9 @@ export class AppDataService {
       )
     );
   };
+
+  loadEmailAndNickname = async () => {
+    await this.storage.ready();
+    return await this.storage.get("tcaUnoEmailAndNickname");
+  };
 }

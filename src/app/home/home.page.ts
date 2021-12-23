@@ -58,10 +58,23 @@ export class HomePage implements OnInit, ViewWillEnter {
     this.gameSizeStats = this.appDataSvc.calculateGameSizeStats();
     // this.firstCardStats = this.appDataSvc.calculateFirstCardStats();
 
-    this.getStarted();
+    this.getReadyToSave();
+
   }
 
-  loading = true;
+  loading = false;
+
+  async getReadyToSave() {
+    const emailAndNickname = await this.appDataSvc.loadEmailAndNickname();
+    const parsedEmailAndNickname = JSON.parse(emailAndNickname);
+    this.email = parsedEmailAndNickname.email;
+    this.nickname = parsedEmailAndNickname.nickname;
+    this.readyToSave = !(this.email.length == 0 || this.nickname.length == 0);
+
+    if (this.readyToSave) {
+      this.getStarted();
+    }
+  }
 
   async getStarted() {
     this.loading = true;
@@ -101,25 +114,31 @@ export class HomePage implements OnInit, ViewWillEnter {
       header: "Choose wisely..."
       , buttons: [
         {
-          text: "Delete All Data"
-          , role: 'destructive'
+          text: "Email & Display Name"
           , handler: () => {
-            this.appDataSvc.clearData();
-            this.getStarted();
+            this.readyToSave = false;
           }
         }
-        , {
-          text: "Copy to Clipboard"
-          , handler: () => {
-            this.hackToClipboard(this.appDataSvc.gameResults);
-          }
-        }
-        , {
-          text: "Paste from Clipboard"
-          , handler: () => {
-            this.hackFromClipboard();
-          }
-        }
+        // {
+        //   text: "Delete All Data"
+        //   , role: 'destructive'
+        //   , handler: () => {
+        //     this.appDataSvc.clearData();
+        //     this.getStarted();
+        //   }
+        // }
+        // , {
+        //   text: "Copy to Clipboard"
+        //   , handler: () => {
+        //     this.hackToClipboard(this.appDataSvc.gameResults);
+        //   }
+        // }
+        // , {
+        //   text: "Paste from Clipboard"
+        //   , handler: () => {
+        //     this.hackFromClipboard();
+        //   }
+        // }
         , {
           text: 'Cancel',
           role: 'cancel',
