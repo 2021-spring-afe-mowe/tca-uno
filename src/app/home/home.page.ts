@@ -69,7 +69,7 @@ export class HomePage implements OnInit, ViewWillEnter {
     const parsedEmailAndNickname = JSON.parse(emailAndNickname);
     this.email = parsedEmailAndNickname.email;
     this.nickname = parsedEmailAndNickname.nickname;
-    this.readyToSave = !(this.email.length == 0 || this.nickname.length == 0);
+    this.readyToSave = !(this.email.length == 0 /* || this.nickname.length == 0 */);
 
     if (this.readyToSave) {
       this.getStarted();
