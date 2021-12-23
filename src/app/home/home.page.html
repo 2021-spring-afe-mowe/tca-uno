@@ -23,7 +23,7 @@
   >
     <ion-card-header>
       <ion-card-subtitle>
-        Use email and nickname to store your data...
+        Use email address to store your data...
       </ion-card-subtitle>
     </ion-card-header>
     <ion-card-content>
@@ -35,19 +35,19 @@
         [(ngModel)]="email"
       >
       </ion-input>
-      <ion-label>
+      <!-- <ion-label>
         Display Name
       </ion-label>
       <ion-input
         placeholder="Enter a display name"
         [(ngModel)]="nickname"
       >
-      </ion-input>
+      </ion-input> -->
       <ion-button
         size="medium"
         color="medium"
         (click)="saveEmailAndNickname()"
-        [attr.disabled]="email.length == 0 || nickname.length == 0"
+        [attr.disabled]="email.length == 0"
       >
         Save
       </ion-button>

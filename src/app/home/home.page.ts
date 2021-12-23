@@ -111,10 +111,10 @@ export class HomePage implements OnInit, ViewWillEnter {
 
   async presentOptoinsActionSheet() {
     const actionSheet = await this.actionSheetController.create({
-      header: "Choose wisely..."
+      header: "Options"
       , buttons: [
         {
-          text: "Email & Display Name"
+          text: "Change email address"
           , handler: () => {
             this.readyToSave = false;
           }
@@ -187,7 +187,7 @@ export class HomePage implements OnInit, ViewWillEnter {
   readyToSave = false;
 
   async saveEmailAndNickname() {
-    if (this.email.length > 0 && this.nickname.length > 0) {
+    if (this.email.length > 0 /*&& this.nickname.length > 0*/) {
       console.log("Saving email and nickname...");
       await this.appDataSvc.saveEmailAndNickname(this.email, this.nickname);
       this.readyToSave = true;
