@@ -325,6 +325,19 @@ export class AppDataService {
     };
   }
 
+  calculateTotalUnoTime() {
+
+    const gameDurations = this.gameResults.map(x => Date.parse((x as any).endDateTime) - Date.parse((x as any).startDateTime));
+    const time = gameDurations.reduce(
+      (acc, x) => acc + x
+      , 1000
+    );
+
+    console.log({gameDurations, time});
+
+    return this.timeConversion(time) ?? "n/a";
+  }
+
   calculateGameTurnFacts() {
 
     const gamesWithTurnCounts = this.gameResults.map(x => x.actions.length);

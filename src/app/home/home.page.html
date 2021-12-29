@@ -85,6 +85,18 @@
     </ion-item-divider>
 
     <ion-item>
+      <ion-card style="flex: auto; margin-left: 0; margin-right: 0; margin-bottom: 0;" color="light">
+        <ion-card-header>
+          <ion-card-subtitle>Total Uno Time</ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-text style="font-size: 1.75em;" color="dark">
+            {{ totalUnoTime }}
+          </ion-text>          
+        </ion-card-content>
+      </ion-card>
+    </ion-item>
+    <ion-item>
       <ion-card style="flex: auto; margin-left: 0; margin-right: 0; margin-bottom: 0;" color="dark">
         <ion-card-header>
           <ion-card-subtitle>Overall</ion-card-subtitle>
@@ -312,13 +324,13 @@
     </ion-item> -->
 
     <ion-item>
-      <ion-card style="flex: auto; margin-left: 0; margin-right: 0; margin-bottom: 0;" color="dark">
+      <ion-card style="flex: auto; margin-left: 0; margin-right: 0; margin-bottom: 0;" color="light">
         <ion-card-header>
           <ion-card-subtitle>Game Turn Facts</ion-card-subtitle>
         </ion-card-header>
 
         <ion-card-content>
-          <ion-text style="font-size: 1.75em;" color="light">
+          <ion-text style="font-size: 1.75em;" color="dark">
             {{ gameTurnFacts.mostTurns }} turns
           </ion-text>
           <br>
@@ -327,7 +339,7 @@
           </small>
           <br>
           <br>
-          <ion-text style="font-size: 1.75em;" color="light">
+          <ion-text style="font-size: 1.75em;" color="dark">
             {{ gameTurnFacts.fewestTurns }} turns
           </ion-text>
           <br>
@@ -364,7 +376,7 @@
     <ion-item
       *ngFor="let g of reverseChron; let i = index"
     >
-      <ion-card style="flex: auto; margin-left: 0; margin-right: 0; margin-bottom: 0;" [attr.color]="i % 2 == 0 ? 'light' : 'dark'">
+      <ion-card style="flex: auto; margin-left: 0; margin-right: 0; margin-bottom: 0;" [attr.color]="i % 2 == 0 ? 'dark' : 'light'">
         <ion-card-header>
           <ion-card-subtitle>{{ g.endDateTime | date }}</ion-card-subtitle>
         </ion-card-header>

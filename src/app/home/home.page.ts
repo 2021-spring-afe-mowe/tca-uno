@@ -15,6 +15,8 @@ import { read, write } from 'clipboardy';
 })
 export class HomePage implements OnInit, ViewWillEnter {
 
+  totalUnoTime = "";
+
   basicStats: BasicStatsDisplay;
   handSizeFacts = {
     largestHand: 0
@@ -54,6 +56,7 @@ export class HomePage implements OnInit, ViewWillEnter {
     this.handSizeFacts = this.appDataSvc.calculateHandSizeFacts();
     this.leaderboard = this.appDataSvc.calculateLeaderboard();
     this.gameTimeFacts = this.appDataSvc.calculateGameTimeFacts();
+    this.totalUnoTime = this.appDataSvc.calculateTotalUnoTime();
     this.gameTurnFacts = this.appDataSvc.calculateGameTurnFacts();
     this.gameSizeStats = this.appDataSvc.calculateGameSizeStats();
     // this.firstCardStats = this.appDataSvc.calculateFirstCardStats();
@@ -83,6 +86,7 @@ export class HomePage implements OnInit, ViewWillEnter {
     this.handSizeFacts = this.appDataSvc.calculateHandSizeFacts();
     this.leaderboard = this.appDataSvc.calculateLeaderboard();
     this.gameTimeFacts = this.appDataSvc.calculateGameTimeFacts();
+    this.totalUnoTime = this.appDataSvc.calculateTotalUnoTime();
     this.gameTurnFacts = this.appDataSvc.calculateGameTurnFacts();
     this.gameSizeStats = this.appDataSvc.calculateGameSizeStats();
     // this.firstCardStats = this.appDataSvc.calculateFirstCardStats();
@@ -97,6 +101,7 @@ export class HomePage implements OnInit, ViewWillEnter {
     this.leaderboard = this.appDataSvc.calculateLeaderboard();
     this.gameTurnFacts = this.appDataSvc.calculateGameTurnFacts();
     this.gameTimeFacts = this.appDataSvc.calculateGameTimeFacts();
+    this.totalUnoTime = this.appDataSvc.calculateTotalUnoTime();
     this.gameSizeStats = this.appDataSvc.calculateGameSizeStats();
     // this.firstCardStats = this.appDataSvc.calculateFirstCardStats();
   
