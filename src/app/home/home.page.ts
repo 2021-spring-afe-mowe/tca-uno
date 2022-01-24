@@ -71,6 +71,7 @@ export class HomePage implements OnInit, ViewWillEnter {
     const emailAndNickname = await this.appDataSvc.loadEmailAndNickname();
     const parsedEmailAndNickname = JSON.parse(emailAndNickname);
     this.email = parsedEmailAndNickname.email;
+    this.appDataSvc.currentEmail = this.email;
     this.nickname = parsedEmailAndNickname.nickname;
     this.readyToSave = !(this.email.length == 0 /* || this.nickname.length == 0 */);
 

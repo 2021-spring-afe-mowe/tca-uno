@@ -431,11 +431,11 @@ export class AppDataService {
 
   saveGame = (g: GameResult) => {
     const dynamoGame: any = {
-      pk: 'tsteele@madisoncollege.edu'
+      pk: this.currentEmail
       , sk: `tca-uno#${g.endDateTime}`
 
       , ts: g.endDateTime
-      , user: 'tsteele@madisoncollege.edu'
+      , user: this.currentEmail
       , app: 'tca-uno'
 
       , gsi1pk: 'tca-uno'
@@ -496,4 +496,6 @@ export class AppDataService {
     await this.storage.ready();
     return await this.storage.get("tcaUnoEmailAndNickname");
   };
+
+  currentEmail = "unknown";
 }
