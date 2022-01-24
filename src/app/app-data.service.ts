@@ -479,6 +479,7 @@ export class AppDataService {
     email
     , nickname
   ) => {
+    this.currentEmail = email;
     await this.storage.ready();
     console.log({email, nickname});
     this.storage.set(
