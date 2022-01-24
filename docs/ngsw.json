@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1640806036687,
+  "timestamp": 1643061392074,
   "index": "https://2021-spring-afe-mowe.github.io/tca-uno/index.html",
   "assetGroups": [
     {
@@ -21,7 +21,7 @@
         "https://2021-spring-afe-mowe.github.io/tca-uno/17.52cf0b2a4ffd8dafd601.js",
         "https://2021-spring-afe-mowe.github.io/tca-uno/18.d6bb7a63956e61e588c9.js",
         "https://2021-spring-afe-mowe.github.io/tca-uno/19.5c647e363d7e0455168d.js",
-        "https://2021-spring-afe-mowe.github.io/tca-uno/2.20198691a605e05f96b5.js",
+        "https://2021-spring-afe-mowe.github.io/tca-uno/2.1d95e423d41491eff410.js",
         "https://2021-spring-afe-mowe.github.io/tca-uno/20.030b9d48f1a1b75f60db.js",
         "https://2021-spring-afe-mowe.github.io/tca-uno/21.2bf29fd9ece2323f6c4e.js",
         "https://2021-spring-afe-mowe.github.io/tca-uno/22.5dd746785d85b8af5481.js",
@@ -63,7 +63,7 @@
         "https://2021-spring-afe-mowe.github.io/tca-uno/57.7750c8b7880c328450e7.js",
         "https://2021-spring-afe-mowe.github.io/tca-uno/58.f688cc002a52ec3b8554.js",
         "https://2021-spring-afe-mowe.github.io/tca-uno/59.63fcd5f55851ab2fceb8.js",
-        "https://2021-spring-afe-mowe.github.io/tca-uno/60.86395d9d30f51edbcd97.js",
+        "https://2021-spring-afe-mowe.github.io/tca-uno/60.2bd0f9da37d0331d3a08.js",
         "https://2021-spring-afe-mowe.github.io/tca-uno/61.49e9845dde88e478fd39.js",
         "https://2021-spring-afe-mowe.github.io/tca-uno/62.657f71d502fae9d29061.js",
         "https://2021-spring-afe-mowe.github.io/tca-uno/common.c224a8c5e71f04fe1086.js",
@@ -74,7 +74,7 @@
         "https://2021-spring-afe-mowe.github.io/tca-uno/polyfills-css-shim.1aa2d6a62b7921b472bd.js",
         "https://2021-spring-afe-mowe.github.io/tca-uno/polyfills-dom.229f6ccdfd09cbe5701c.js",
         "https://2021-spring-afe-mowe.github.io/tca-uno/polyfills.c060f60bd822f41fc6bc.js",
-        "https://2021-spring-afe-mowe.github.io/tca-uno/runtime.62436478c2ca38b9c809.js",
+        "https://2021-spring-afe-mowe.github.io/tca-uno/runtime.df4c042538474e40d92c.js",
         "https://2021-spring-afe-mowe.github.io/tca-uno/styles.67a8a1b809171d3a28ee.css"
       ],
       "patterns": []
@@ -114,7 +114,7 @@
     "https://2021-spring-afe-mowe.github.io/tca-uno/17.52cf0b2a4ffd8dafd601.js": "151b241fb524dbd0ebb96a52d61e353203b0897f",
     "https://2021-spring-afe-mowe.github.io/tca-uno/18.d6bb7a63956e61e588c9.js": "802a621dc9d67f95ffa0f4366aa6440e4e5dff5f",
     "https://2021-spring-afe-mowe.github.io/tca-uno/19.5c647e363d7e0455168d.js": "42dc86144b8ba8d295ee9bb0f39c9352d6020c05",
-    "https://2021-spring-afe-mowe.github.io/tca-uno/2.20198691a605e05f96b5.js": "8dca97419a0ff78e2a75f2b06797b8c6e11ec22b",
+    "https://2021-spring-afe-mowe.github.io/tca-uno/2.1d95e423d41491eff410.js": "bc26c42c21377c38c75ce0b480b80aba29f0bd1e",
     "https://2021-spring-afe-mowe.github.io/tca-uno/20.030b9d48f1a1b75f60db.js": "90d8c82c0ab513b698749db4a5edf46fcd7607cf",
     "https://2021-spring-afe-mowe.github.io/tca-uno/21.2bf29fd9ece2323f6c4e.js": "0543608a14d19fe98081ced471914fbe205b5a3f",
     "https://2021-spring-afe-mowe.github.io/tca-uno/22.5dd746785d85b8af5481.js": "64fa1c5e557be85027dd3301623139d2cc698ac9",
@@ -156,7 +156,7 @@
     "https://2021-spring-afe-mowe.github.io/tca-uno/57.7750c8b7880c328450e7.js": "a98a08581cb6d48f5f6c50d4ce2d7134053fc71e",
     "https://2021-spring-afe-mowe.github.io/tca-uno/58.f688cc002a52ec3b8554.js": "67ad06ab911086ee0134c7af5cbb05ec0bd074c5",
     "https://2021-spring-afe-mowe.github.io/tca-uno/59.63fcd5f55851ab2fceb8.js": "979c7ed5d2b23c4097f6078c09a9658451745d24",
-    "https://2021-spring-afe-mowe.github.io/tca-uno/60.86395d9d30f51edbcd97.js": "b6612777d9ca307756f4c3edf186f4fc6ad1be9f",
+    "https://2021-spring-afe-mowe.github.io/tca-uno/60.2bd0f9da37d0331d3a08.js": "00cfa9932fb4d500c9d232e588e41d9439309738",
     "https://2021-spring-afe-mowe.github.io/tca-uno/61.49e9845dde88e478fd39.js": "ecc035713e9e53a0a5c58a938bf5f2a4b74b16cd",
     "https://2021-spring-afe-mowe.github.io/tca-uno/62.657f71d502fae9d29061.js": "f0ec2dab326e4bf78201b5535c5bdcf88680f8d4",
     "https://2021-spring-afe-mowe.github.io/tca-uno/assets/home-page-hero-image.jpg": "bbad98e54007db8ca9828e7b28c04e4b04b89e10",
@@ -171,14 +171,14 @@
     "https://2021-spring-afe-mowe.github.io/tca-uno/assets/icons/icon-96x96.png": "865fc9902241e27c905a6668bc77c222b5765194",
     "https://2021-spring-afe-mowe.github.io/tca-uno/assets/shapes.svg": "638f87e27e6fc7ddfd6e6b262ea70d690f6c7011",
     "https://2021-spring-afe-mowe.github.io/tca-uno/common.c224a8c5e71f04fe1086.js": "c6ba38e7df9012e21d7c93c09c64c6801542b2d2",
-    "https://2021-spring-afe-mowe.github.io/tca-uno/index.html": "8a60fab472ccfac82ba08aea099cec29b5a9fcd0",
+    "https://2021-spring-afe-mowe.github.io/tca-uno/index.html": "b5efa3394d2946c0557618db2f56f5fabbcdb8f7",
     "https://2021-spring-afe-mowe.github.io/tca-uno/main.1fc31156fe3a9f711adf.js": "3d94b57446edc3e36fe44597e13314cfca3e7cf2",
     "https://2021-spring-afe-mowe.github.io/tca-uno/manifest.webmanifest": "c06a6f2d3e5ba0c5b28eeb0015269296c6ad745c",
     "https://2021-spring-afe-mowe.github.io/tca-uno/polyfills-core-js.34a7a4f3eef21f09975c.js": "3d74d90a65b32ec6ecf12af7fca30e49ab4bee0b",
     "https://2021-spring-afe-mowe.github.io/tca-uno/polyfills-css-shim.1aa2d6a62b7921b472bd.js": "da184683e827794713898120c7264b1a94664526",
     "https://2021-spring-afe-mowe.github.io/tca-uno/polyfills-dom.229f6ccdfd09cbe5701c.js": "3455849cad83b87b1a14b708e9b057e7d60ca34e",
     "https://2021-spring-afe-mowe.github.io/tca-uno/polyfills.c060f60bd822f41fc6bc.js": "dc1358a6c7a2e9b4c61d2306e9299468424de320",
-    "https://2021-spring-afe-mowe.github.io/tca-uno/runtime.62436478c2ca38b9c809.js": "b91d114412d315dc7ea452d13c516709dce46e64",
+    "https://2021-spring-afe-mowe.github.io/tca-uno/runtime.df4c042538474e40d92c.js": "9f5eea66c25dfbb8f3b0fd80635e4550dd84ca75",
     "https://2021-spring-afe-mowe.github.io/tca-uno/styles.67a8a1b809171d3a28ee.css": "2acea6176e30f62498b2eeb47df7c0ea36bda227"
   },
   "navigationUrls": [
