@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Storage } from '@ionic/storage';
+import { Storage } from '@ionic/storage-angular';
 import { marshall, unmarshall } from '@aws-sdk/util-dynamodb';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { maxHeaderSize } from 'http';
 
 export interface BasicStatsDisplay {
   numberOfGames: number;
@@ -65,21 +64,26 @@ export class AppDataService {
     private storage: Storage
     , private httpSvc: HttpClient
   ) { 
+    this.init();
     //this.loadPreviousGameResults();
+  }
+
+  async init() {
+    // Initialize the storage if it hasn't been created yet
+    await this.storage.create();
   }
 
   async loadPreviousGameResults() {
 
-    await this.storage.ready();
     const emailAndNickname = await this.storage.get("tcaUnoEmailAndNickname");
     console.log(emailAndNickname);
     const dynamodbData = await this.loadGames(JSON.parse(emailAndNickname));
     
     console.log(dynamodbData);
     // Get to the 'game' of each result and unmarshall it ! ! !
-    const unmarshalledGameResults = (dynamodbData as any).Items.map(x => unmarshall(x));
+    const unmarshalledGameResults = (dynamodbData as any).Items.map((x: any) => unmarshall(x));
     //console.log(unmarshalledGameResults);
-    this.gameResults = unmarshalledGameResults.map(x => x.game); 
+    this.gameResults = unmarshalledGameResults.map((x: any) => x.game); 
     //const unmarshalledGameResults = unmarshall(marshalledGameResults, {convertEmptyValues: true});
     //console.log(unmarshalledGameResults);
 
@@ -118,8 +122,8 @@ export class AppDataService {
   //
   // This is a convenient way to share data between screens.
   //
-  currentGameStartDateTime: string;
-  currentGameOpponents: string[];
+  currentGameStartDateTime: string = '';
+  currentGameOpponents: string[] = [];
 
   confirmGameEnd(
     winLossOrQuit: string
@@ -128,7 +132,7 @@ export class AppDataService {
     , nameOfWinner?: string
   ) {
 
-    let newGameResult: GameResult;
+    let newGameResult: GameResult | undefined;
 
     switch (winLossOrQuit) {
       case "Win":
@@ -148,7 +152,7 @@ export class AppDataService {
           , endDateTime: new Date().toISOString()
           , opponents: this.currentGameOpponents
           , actions: playActions
-          , winningPlayer: nameOfWinner
+          , winningPlayer: nameOfWinner || "Unknown"
           , firstCardPlayedBy: firstCardPlayedBy
         };
         break;
@@ -165,20 +169,22 @@ export class AppDataService {
         break;
     }
 
-    // https://32wop75hhc.execute-api.us-east-1.amazonaws.com/prod/data/?user=tsteele@madisoncollege.edu&game=tca-uno
-    
-    this.gameResults = [
-      ...this.gameResults
-      , newGameResult
-    ];
+    if (newGameResult) {
+      // https://32wop75hhc.execute-api.us-east-1.amazonaws.com/prod/data/?user=tsteele@madisoncollege.edu&game=tca-uno
+      
+      this.gameResults = [
+        ...this.gameResults
+        , newGameResult
+      ];
 
-    this.saveGame(newGameResult);
+      this.saveGame(newGameResult);
+    }
     
     // this.storage.set("tcaUnoGameResults", JSON.stringify(this.gameResults));
     console.log("confirmGameEnd()", this.gameResults);
   }
 
-  updateWithPastedGameResults(results) {
+  updateWithPastedGameResults(results: any) {
     this.gameResults = results;
     //this.storage.set("tcaUnoGameResults", JSON.stringify(this.gameResults));
   }
@@ -216,7 +222,7 @@ export class AppDataService {
 
     const maxHand = Math.max(
       ...gamesWithWinIndicatorDateAndArrayOfHandSize.reduce(
-        (acc, x) => [
+        (acc: number[], x) => [
           ...acc
           , ...x.actions
         ]
@@ -228,7 +234,7 @@ export class AppDataService {
       ...gamesWithWinIndicatorDateAndArrayOfHandSize
         .filter(x => x.win)
         .reduce(
-          (acc, x) => [
+          (acc: number[], x) => [
             ...acc
             , ...x.actions
           ]
@@ -269,8 +275,8 @@ export class AppDataService {
 
     const finalShape = [...gameResultsGroupedByPlayers]
       .map(x => {
-          const wins = x[1].filter(y => y.winningPlayer == x[0]).length;
-          const losses = x[1].filter(y => y.winningPlayer != x[0] && y.winningPlayer != "None").length;
+          const wins = x[1].filter((y: any) => y.winningPlayer == x[0]).length;
+          const losses = x[1].filter((y: any) => y.winningPlayer != x[0] && y.winningPlayer != "None").length;
 
           return {
             name: x[0]
@@ -371,8 +377,8 @@ export class AppDataService {
 
     const finalShape = [...gameResultsGroupedByNumberOfPlayers]
       .map(x => {
-          const wins = x[1].filter(y => y.winningPlayer == "Me").length;
-          const losses = x[1].filter(y => y.winningPlayer != "Me" && y.winningPlayer != "None").length;
+          const wins = x[1].filter((y: any) => y.winningPlayer == "Me").length;
+          const losses = x[1].filter((y: any) => y.winningPlayer != "Me" && y.winningPlayer != "None").length;
 
           return {
             numberOfPlayers: x[0]
@@ -468,7 +474,7 @@ export class AppDataService {
     ).subscribe();
   };
 
-  loadGames = (emailAndNickname) => {
+  loadGames = (emailAndNickname: any) => {
     console.log(emailAndNickname);
     const url = `https://32wop75hhc.execute-api.us-east-1.amazonaws.com/prod/data/?user=${emailAndNickname?.email}&game=tca-uno`;
     console.log(url);
@@ -476,11 +482,10 @@ export class AppDataService {
   };
 
   saveEmailAndNickname = async (
-    email
-    , nickname
+    email: any
+    , nickname: any
   ) => {
     this.currentEmail = email;
-    await this.storage.ready();
     console.log({email, nickname});
     this.storage.set(
       "tcaUnoEmailAndNickname"
@@ -494,7 +499,6 @@ export class AppDataService {
   };
 
   loadEmailAndNickname = async () => {
-    await this.storage.ready();
     return await this.storage.get("tcaUnoEmailAndNickname");
   };
 

@@ -17,13 +17,20 @@ export class HomePage implements OnInit, ViewWillEnter {
 
   totalUnoTime = "";
 
-  basicStats: BasicStatsDisplay;
+  basicStats: BasicStatsDisplay = {
+    numberOfGames: 0,
+    wins: 0,
+    losses: 0,
+    winningPercent: 0,
+    quits: 0,
+    completionPercent: 0
+  };
   handSizeFacts = {
     largestHand: 0
     , largestHandWithWin: 0
   };
 
-  leaderboard = [];
+  leaderboard: any[] = [];
 
   gameTimeFacts = {
     longest: ""
@@ -37,7 +44,9 @@ export class HomePage implements OnInit, ViewWillEnter {
     , quickestLoss: ""
   };
    
-  gameSizeStats = [];
+  gameSizeStats: any[] = [];
+
+  reverseChron: any[] = [];
   
   // firstCardStats = {
   //   winningPercent: 0
@@ -109,8 +118,6 @@ export class HomePage implements OnInit, ViewWillEnter {
     this.reverseChron = this.appDataSvc.getResultsInReverseChron();
   }
 
-  reverseChron = [];
-
   showOptions() {
     this.presentOptoinsActionSheet();
   }
@@ -154,7 +161,7 @@ export class HomePage implements OnInit, ViewWillEnter {
     await actionSheet.present();
   }
 
-  hackToClipboard = async (data) => {
+  hackToClipboard = async (data: any) => {
     await write(JSON.stringify(data));
     //const dataRead = await read();
     //console.log(dataRead);

@@ -18,7 +18,7 @@ export class SetupGamePage implements OnInit {
     , private toastController: ToastController
   ) { }
 
-  availablePlayers = [];
+  availablePlayers: any[] = [];
 
   ngOnInit() {
 
